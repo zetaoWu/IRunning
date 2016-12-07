@@ -1,3 +1,7 @@
+
+/**
+ *  设置Navigator上的 左右按钮和标题
+ */
 import React, {
     Component
 } from 'react'
@@ -44,7 +48,7 @@ const styles = {
 function _renderBarButton(text, handler, icon = false, buttonStyle = {}, buttonTextStyle = {}) {
     let buttonText = [styles.buttonText, buttonTextStyle]
     if (icon) {
-        // text = iconfontConf(text)
+        text = iconfontConf(text)
         buttonText = [buttonText, styles.buttonIconFontText]
     }
     return (
@@ -74,7 +78,8 @@ export default class NavbarComp extends Component {
                     marginLeft: 10
                 })
             default:
-                return _renderBarButton('uniE617', () => this.props.navigator.pop(), true)
+                // return _renderBarButton('uniE617', () => this.props.navigator.pop(), true)
+                break;
         }
     }
 

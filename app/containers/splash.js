@@ -24,6 +24,7 @@ import Storage from 'react-native-storage';
 import mainComponent from './main.js';
 import regComponent from './reg.js';
 import regOrLoginCmp from './regOrLogin.js';
+
 export default class splash extends Component {
     constructor(props) {
         super(props);
@@ -66,11 +67,11 @@ export default class splash extends Component {
 
             if (result) {
                 that.timer = setTimeout(() => {
-                    that._goNextScene(mainComponent, result);
+                    that._goNextScene(mainComponent, result, 'main');
                 }, 3000);
             } else {
                 that.timer = setTimeout(() => {
-                    that._goNextScene(regOrLoginCmp, null);
+                    that._goNextScene(regOrLoginCmp, null, 'regOrLogin');
                 }, 3000);
             }
         });
@@ -95,13 +96,13 @@ export default class splash extends Component {
     //                 this._goNextScene({ component: regComponent });
     //             }, 3000);
     //         }
-    _goNextScene(nextRoute, result) {
+    _goNextScene(nextRoute, result, id) {
         // this.st.navigator.resetTo(nextRoute);
-        const {navigator} = this.props;
-        if (navigator) {
-            navigator.push({
-                // name: 'mainComponent',
-                // component: mainComponent,
+
+        if (this.props.navigator) {
+            this.props.navigator.push({
+                title: nextRoute + '',
+                id: id + '',
                 name: nextRoute + '',
                 component: nextRoute,
                 params: {
@@ -122,6 +123,7 @@ export default class splash extends Component {
     render() {
         return (
             <View style={{ width: widthSrc, height: heightSrc }}>
+
                 <View style={styles.container}>
                     {/* <Image style={styles.splash_image} source={require('image!b')}></Image> */}
                     {/* <Text style={styles.splash_text}>Keep</Text> */}

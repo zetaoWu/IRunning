@@ -27,6 +27,7 @@ import HomePage from './page/homePage';
 import FindPage from './page/findPage';
 import ActionPage from './page/actionPage';
 import MePage from './page/mePage';
+import NavbarComp from './Comments/NavBar.js';
 
 import TabNavigator from 'react-native-tab-navigator';
 
@@ -94,6 +95,7 @@ export default class main extends Component {
                     hidden={false}
                     animated={true}
                     />
+
                 <TabNavigator style={{ marginTop: 20 }}>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'home'}
@@ -103,7 +105,7 @@ export default class main extends Component {
                         renderIcon={() => <Image style={{ width: 25, height: 25 }} source={require('../img/sharkoff.png')} />}
                         renderSelectedIcon={() => <Image style={{ width: 25, height: 25 }} source={require('../img/sharkon.png')} />}
                         onPress={() => this.setState({ selectedTab: 'home' })}>
-                        <HomePage navigator={that.props.navigator} username={num} />
+                        <HomePage  navigator={that.props.navigator} username={num} />
                     </TabNavigator.Item>
 
                     <TabNavigator.Item

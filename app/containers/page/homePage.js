@@ -17,9 +17,9 @@ var config = require('../../config');
 import RunComponent from '../run';
 import AddClassComponent from '../addClass';
 import TrainHis from '../trainHis';
+import NavbarComp from '../Comments/NavBar.js';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
-
 var data = ['row1', 'row2', 'row3', 'row4', 'row5', 'row13', 'row2421'];
 var imgs = [
     require('../../img/icon1.jpg'),
@@ -262,18 +262,19 @@ export default class homePage extends Component {
         }
     }
 
+//    <View style={styles.main_top}>
+//                     <TouchableWithoutFeedback onPress={this._onRunFunction.bind(this)}>
+//                         <Image style={styles.icon_left} resizeMode='contain' source={require('image!run_data_default')}></Image>
+//                     </TouchableWithoutFeedback>
+//                     <Image style={styles.top_icon} resizeMode='contain' source={require('image!keep5')}></Image>
+//                     <TouchableWithoutFeedback onPress={this._onAddFunction.bind(this)}>
+//                         <Image style={styles.icon_image} resizeMode='contain' source={require('image!add_icon')}></Image>
+//                     </TouchableWithoutFeedback>
+//                 </View>
     render() {
         return (
             <View>
-                <View style={styles.main_top}>
-                    <TouchableWithoutFeedback onPress={this._onRunFunction.bind(this)}>
-                        <Image style={styles.icon_left} resizeMode='contain' source={require('image!run_data_default')}></Image>
-                    </TouchableWithoutFeedback>
-                    <Image style={styles.top_icon} resizeMode='contain' source={require('image!keep5')}></Image>
-                    <TouchableWithoutFeedback onPress={this._onAddFunction.bind(this)}>
-                        <Image style={styles.icon_image} resizeMode='contain' source={require('image!add_icon')}></Image>
-                    </TouchableWithoutFeedback>
-                </View>
+                <NavbarComp route={this.props.route} navigator={this.props.navigator} />
 
                 <ScrollView>
                 <TouchableWithoutFeedback onPress={() => this._toTrainHis()}>

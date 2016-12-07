@@ -35,6 +35,7 @@ export default class PostDynamic extends Component {
     }
 
     componentDidMount() {
+
         if (Platform.OS === 'android') {
             BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
         }

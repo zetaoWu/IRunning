@@ -18,7 +18,9 @@ import {
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
 
-import splashComponent from './splash.js';
+import MainView from './main.js';
+import SplashView from './splash.js';
+
 
 class App extends React.Component {
     constructor(props) {
@@ -32,8 +34,8 @@ class App extends React.Component {
     }
 
     render() {
-        var splashName = 'splashName';
-        var defaultComponent = splashComponent;
+        var splashName = 'splash';
+        
         return (
             <View style={{ width: widthSrc, height: heightSrc }}>
                 <StatusBar
@@ -44,22 +46,67 @@ class App extends React.Component {
                     animated={false}
                     />
                 <Navigator
-                    initialRoute={{ name: splashName, component: defaultComponent, statusBarHidden: true }}
-                    configureScene={(route) => {
-                        //转换动画
-                        return Navigator.SceneConfigs.PushFromRight;
-                    } }
-                    renderScene={(route, navigator) => {
-                        <StatusBar hidden={route.statusBarHidden} />
-
-                        let Component = route.component;
-                        if (route.component) {
-                            return <Component {...route.params} navigator={navigator} />
-                        }
-                    } }
+                    initialRoute={{ name: splashName, index: 0, id: splashName }}
+                    configureScene={this._configureScene}
+                    renderScene={this._renderScene}
                     />
             </View>
         );
+    }
+
+    _renderScene(route, navigator) {
+        <StatusBar hidden={route.statusBarHidden} />
+        switch (route.id) {
+            case 'splash':
+                return (
+                    <SplashView  {...route.params} navigator={navigator} route={route} />
+                )
+            case 'main':
+                return (
+                    <MainView {...route.params} navigator={navigator} route={route} />
+                )
+            case 'message':
+                return (
+                    <MessageView {...route.params} navigator={navigator} route={route} />
+                )
+            case 'tweet':
+                return (
+                    <TweetView navigator={navigator} route={route} />
+                )
+            case 'feedback':
+                return (
+                    <FeedbackView navigator={navigator} route={route} />
+                )
+            case 'webview':
+                return (
+                    <WebViewView {...route.params} navigator={navigator} route={route} />
+                )
+            case 'tweetDetails':
+                return (
+                    <TweetDetailsView {...route.params} navigator={navigator} route={route} />
+                )
+            case 'comment':
+                return (
+                    <CommentView navigator={navigator} route={route} />
+                )
+            case 'photoBrowser':
+                return (
+                    <PhotoBrowserView {...route.params} navigator={navigator} />
+                )
+            default:
+                break
+        }
+    }
+
+    _configureScene(route, routeStack) {
+        switch (route.id) {
+            case 'tweet':
+            case 'webview':
+            case 'photoBrowser':
+                return Navigator.SceneConfigs.FloatFromBottom
+            default:
+                return Navigator.SceneConfigs.FloatFromRight
+        }
     }
 }
 
