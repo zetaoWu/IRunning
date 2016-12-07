@@ -18,6 +18,7 @@ import {
 
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
+
 import PostDynamic from './PostDynamic';
 export default class UserInfo extends Component {
     constructor(props) {
@@ -59,6 +60,7 @@ export default class UserInfo extends Component {
             navigator.push({
                 name: 'PostDynamic',
                 component: PostDynamic,
+                
             });
         }
     }
