@@ -19,7 +19,7 @@ import {
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
 
-import PostDynamic from './PostDynamic';
+
 export default class UserInfo extends Component {
     constructor(props) {
         super(props);
@@ -59,8 +59,7 @@ export default class UserInfo extends Component {
         if (navigator) {
             navigator.push({
                 name: 'PostDynamic',
-                component: PostDynamic,
-                
+                id: 'PostDynamic',
             });
         }
     }
@@ -84,7 +83,6 @@ export default class UserInfo extends Component {
                         </View>
                         <Image style={{ marginLeft: 300, width: 17, height: 17, marginTop: 5 }} source={require('../img/camera.png')} resizeMode='center'></Image>
                     </View>
-
 
                     <View style={{ width: widthSrc - 20, height: 45, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginLeft: 15, marginRight: 0 }}>
                         <Text style={{ fontSize: 15 }}>训练</Text>

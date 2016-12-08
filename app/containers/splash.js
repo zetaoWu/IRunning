@@ -98,13 +98,11 @@ export default class splash extends Component {
     //         }
     _goNextScene(nextRoute, result, id) {
         // this.st.navigator.resetTo(nextRoute);
-
         if (this.props.navigator) {
             this.props.navigator.push({
                 title: nextRoute + '',
                 id: id + '',
                 name: nextRoute + '',
-                component: nextRoute,
                 params: {
                     username: result,
                 }

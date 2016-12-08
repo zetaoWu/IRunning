@@ -16,7 +16,7 @@ var url = require('../../url');
 var config = require('../../config');
 import RunComponent from '../run';
 import AddClassComponent from '../addClass';
-import TrainHis from '../trainHis';
+import TrainHisView from '../trainHis';
 import NavbarComp from '../Comments/NavBar.js';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
@@ -252,51 +252,49 @@ export default class homePage extends Component {
     }
 
     _toTrainHis() {
-        ToastAndroid.show("点解了", 3);
         const {navigator} = this.props;
         if (navigator) {
             navigator.push({
-                name: 'TrainHis',
-                component: TrainHis,
+                name: 'TrainHisView',
+                title:'所有训练历史',
+                id:'trainHis',
             });
         }
     }
-
-//    <View style={styles.main_top}>
-//                     <TouchableWithoutFeedback onPress={this._onRunFunction.bind(this)}>
-//                         <Image style={styles.icon_left} resizeMode='contain' source={require('image!run_data_default')}></Image>
-//                     </TouchableWithoutFeedback>
-//                     <Image style={styles.top_icon} resizeMode='contain' source={require('image!keep5')}></Image>
-//                     <TouchableWithoutFeedback onPress={this._onAddFunction.bind(this)}>
-//                         <Image style={styles.icon_image} resizeMode='contain' source={require('image!add_icon')}></Image>
-//                     </TouchableWithoutFeedback>
-//                 </View>
+    //<NavbarComp navigator={this.props.navigator} />
     render() {
         return (
             <View>
-                <NavbarComp route={this.props.route} navigator={this.props.navigator} />
-
+                <View style={styles.main_top}>
+                    <TouchableWithoutFeedback onPress={this._onRunFunction.bind(this)}>
+                        <Image style={styles.icon_left} resizeMode='contain' source={require('image!run_data_default')}></Image>
+                    </TouchableWithoutFeedback>
+                    <Image style={styles.top_icon} resizeMode='contain' source={require('image!keep5')}></Image>
+                    <TouchableWithoutFeedback onPress={this._onAddFunction.bind(this)}>
+                        <Image style={styles.icon_image} resizeMode='contain' source={require('image!add_icon')}></Image>
+                    </TouchableWithoutFeedback>
+                </View>
                 <ScrollView>
-                <TouchableWithoutFeedback onPress={() => this._toTrainHis()}>
-                <View >
-                    <TouchableWithoutFeedback >
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: widthSrc - 20, marginLeft: 10, height: 30 }} >
-                            <Text style={{ fontSize: 13 }}>总共训练</Text>
-                            <Text></Text>
-                            <Image style={[styles.icon_left,]} resizeMode='contain' source={require('image!jumpto')}></Image>
+                    <TouchableWithoutFeedback onPress={() => this._toTrainHis()}>
+                        <View >
+                            <TouchableWithoutFeedback >
+                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: widthSrc - 20, marginLeft: 10,marginTop:10,height: 30 }} >
+                                    <Text style={{ fontSize: 13 }}>总共训练</Text>
+                                    <Text></Text>
+                                    <Image style={[styles.icon_left,]} resizeMode='contain' source={require('image!jumpto')}></Image>
+                                </View>
+                            </TouchableWithoutFeedback>
+
+                            <View style={{ width: widthSrc, height: 50, alignItems: 'center', justifyContent: 'center' }}>
+                                <Text style={{ fontSize: 30 }}>{this.state.trainInfo.totalTime}分钟</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', marginTop: 5, justifyContent: 'space-between', marginLeft: 10, marginRight: 10 }}>
+                                <Text style={{ fontSize: 11 }}>完成</Text>
+                                <Text style={{ fontSize: 11 }}>累计</Text>
+                                <Text style={{ fontSize: 11 }}>消耗</Text>
+                            </View>
                         </View>
                     </TouchableWithoutFeedback>
-
-                    <View style={{ width: widthSrc, height: 50, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text style={{ fontSize: 30 }}>{this.state.trainInfo.totalTime}分钟</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row', marginTop: 5, justifyContent: 'space-between', marginLeft: 10, marginRight: 10 }}>
-                        <Text style={{ fontSize: 11 }}>完成</Text>
-                        <Text style={{ fontSize: 11 }}>累计</Text>
-                        <Text style={{ fontSize: 11 }}>消耗</Text>
-                    </View>
-                </View>
-                </TouchableWithoutFeedback>
                     <View style={{ flexDirection: 'row', width: widthSrc, marginTop: 5, justifyContent: 'space-between', marginLeft: 10, marginRight: 10 }}>
                         <Text style={{ fontSize: 15 }}>{this.state.trainInfo.traninCount}次    </Text>
                         <Text style={{ fontSize: 15 }}>{this.state.trainInfo.totalDayNum}天</Text>

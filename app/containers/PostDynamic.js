@@ -22,7 +22,6 @@ var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
 import { toastShort } from '../utils/ToastUtil';
 var alertMessage = '你还没有发布动态,确定不发布了吗?';
-
 export default class PostDynamic extends Component {
     constructor(props) {
         super(props);
@@ -41,19 +40,18 @@ export default class PostDynamic extends Component {
         }
     }
 
-    componentWillMount() {
+ componentWillMount() {
         // Keyboard events监听
-        this.keyboardWillShow = Keyboard.addListener('keyboardWillShow', (event) => this._keyboardWillShow(event))
-        this.keyboardWillHide = Keyboard.addListener('keyboardWillHide', (event) => this._keyboardWillHide(event))
+        Keyboard.addListener('keyboardWillShow',(event) => this._keyboardWillShow(event));
+        Keyboard.addListener('keyboardWillHide',() => this._keyboardWillHide());
     }
 
     componentWillUnmount() {
         if (Platform.OS === 'android') {
             BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
         }
-
-        this.keyboardWillShow.remove()
-        this.keyboardWillHide.remove()
+        Keyboard.removeAllListeners('keyboardWillShow');
+        Keyboard.removeAllListeners('keyboardWillHide');
     }
 
     _keyboardWillShow = (frames) => {
@@ -62,7 +60,6 @@ export default class PostDynamic extends Component {
             toValue: this.keyboardHeight,
             duration: 300,
         }).start();
-
 
         console.log(keyboardHeight + '');
 
@@ -121,7 +118,10 @@ export default class PostDynamic extends Component {
     }
 
     _surePost() {
-        toastShort('发布');
+        toastShort('发布');   
+        this.props.navigator.push({
+            id: 'PostScs',
+        });
     }
 
     render() {

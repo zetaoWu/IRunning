@@ -29,7 +29,6 @@ var images = [
     require('../img/qq.png'),
     require('../img/qzone.png'),
     require('../img/sina.png'),
-
 ];
 
 export default class trainHis extends Component {
@@ -106,10 +105,18 @@ export default class trainHis extends Component {
         this.setState({ modalVisible: false });
     }
 
+    _backFunction() {
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.pop();
+        }
+    }
+
     _renderSetRow(rowData, sectionID, rowID) {
         return (
             <TouchableHighlight underlayColor='transparent' onPress={(rowID, rowData) => this._toSharedPlatFrom(rowID, rowData)}>
                 <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
+
                     <Image style={{ width: 68, height: 65 }} resizeMode='contain' source={images[rowID]}></Image>
                     <Text style={{ color: '#000000' }}>{rowData}</Text>
                 </View>
@@ -134,13 +141,13 @@ export default class trainHis extends Component {
                     animationType={"fade"}
                     transparent={true}
                     visible={this.state.modalVisible}
-                    onRequestClose={(a) => { this._onShared(a) } }>
+                    onRequestClose={() => { this._toCancel } }>
                     {
                         //判断  如果是1 的话是选择时间  2 是选择分享
                         this.state.onClickLable === 1 ? <View style={styles.grayBack}>
                             <View style={{ width: 170, height: 70, backgroundColor: '#FFFFFF', marginTop: 50, borderRadius: 5, alignItems: 'center', justifyContent: 'center' }}>
                                 <Text style={{ marginBottom: 7, fontSize: 12 }} onPress={() => this._selectHisShow()}>所有训练历史</Text>
-                                <View style={{ idth: widthSrc, height: 1, backgroundColor: '#D8D8D8' }}></View>
+                                <View style={{ width: widthSrc, height: 1, backgroundColor: '#D8D8D8' }}></View>
                                 <Text style={{ marginTop: 7, fontSize: 12 }} onPress={() => this._selectHisShow()}>跑步历史</Text>
                             </View>
                         </View> : <View style={[styles.innerContainer]}  >
@@ -160,13 +167,14 @@ export default class trainHis extends Component {
 
                 <View style={[styles.main_top, { marginTop: 20 }]}>
                     <TouchableWithoutFeedback onPress={() => this._onBackFunction()}>
-                        <Image style={styles.icon_left} resizeMode='contain' source={require('../img/back_icon.png')}></Image>
+                        <Image style={styles.icon_left} resizeMode='contain' source={require('../img/backicon.png')}></Image>
                     </TouchableWithoutFeedback>
                     <Text style={styles.toptitle} onPress={(a) => this._onShared(a, 1)}>所有训练历史</Text>
                     <TouchableWithoutFeedback onPress={(a) => this._onShared(a, 2)}>
                         <Image style={styles.icon_right} resizeMode='contain' source={require('../img/shared.png')}></Image>
                     </TouchableWithoutFeedback>
                 </View>
+
                 <ScrollableTabView style={{ height: 100 }}
                     tabBarUnderlineStyle={{ borderColor: '#FFFFFF', backgroundColor: '#453d4b' }}
                     tabBarActiveTextColor='#5c6166'
@@ -196,7 +204,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     icon_left: {
-        width: 23,
+        width: 2,
         height: 23
     },
     grayBack: {

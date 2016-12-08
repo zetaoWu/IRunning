@@ -17,11 +17,12 @@ import {
 } from 'react-native';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
-
+import PostScsView from './PostScs.js';
 import MainView from './main.js';
 import SplashView from './splash.js';
-
-
+import TrainHisView from './trainHis.js';
+import UserInfoView from './UserInfo';
+import PostDynamicView from './PostDynamic';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -65,21 +66,21 @@ class App extends React.Component {
                 return (
                     <MainView {...route.params} navigator={navigator} route={route} />
                 )
-            case 'message':
+            case 'trainHis':
                 return (
-                    <MessageView {...route.params} navigator={navigator} route={route} />
+                    <TrainHisView {...route.params} navigator={navigator} route={route} />
                 )
-            case 'tweet':
+            case 'UserInfo':
                 return (
-                    <TweetView navigator={navigator} route={route} />
+                    <UserInfoView {...route.params}  navigator={navigator} route={route} />
                 )
-            case 'feedback':
+            case 'PostDynamic':
                 return (
-                    <FeedbackView navigator={navigator} route={route} />
+                    <PostDynamicView  {...route.params} navigator={navigator} route={route} />
                 )
-            case 'webview':
+            case 'PostScs':
                 return (
-                    <WebViewView {...route.params} navigator={navigator} route={route} />
+                    <PostScsView {...route.params} navigator={navigator} route={route} />
                 )
             case 'tweetDetails':
                 return (
@@ -102,7 +103,7 @@ class App extends React.Component {
         switch (route.id) {
             case 'tweet':
             case 'webview':
-            case 'photoBrowser':
+            case 'PostScs':
                 return Navigator.SceneConfigs.FloatFromBottom
             default:
                 return Navigator.SceneConfigs.FloatFromRight
