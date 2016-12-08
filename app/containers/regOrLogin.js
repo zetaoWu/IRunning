@@ -63,7 +63,7 @@ export default class regOrLogin extends Component {
         if (navigator) {
             navigator.push({
                 name: 'reg',
-                component: reg,
+                id:'reg',
             });
         }
     }
@@ -73,7 +73,7 @@ export default class regOrLogin extends Component {
         if (navigator) {
             navigator.push({
                 name: 'login',
-                component: login,
+                id:'login',
             });
         }
     }

@@ -65,7 +65,7 @@ export default class login extends Component {
                     if (navigator) {
                         navigator.push({
                             name: 'main',
-                            component: main,
+                            id: 'main',
                             params: {
                                 username: this.state.username,
                             }

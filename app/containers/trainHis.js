@@ -101,6 +101,7 @@ export default class trainHis extends Component {
         // this.setState({ modalVisible: false });
         this._onShared(false);
     }
+    
     _toCancel() {
         this.setState({ modalVisible: false });
     }
@@ -141,7 +142,8 @@ export default class trainHis extends Component {
                     animationType={"fade"}
                     transparent={true}
                     visible={this.state.modalVisible}
-                    onRequestClose={() => { this._toCancel } }>
+                    onRequestClose={() => {  } }>
+                    <Text style={styles.overlay} onPress={()=>this._toCancel()}></Text>
                     {
                         //判断  如果是1 的话是选择时间  2 是选择分享
                         this.state.onClickLable === 1 ? <View style={styles.grayBack}>
@@ -150,7 +152,7 @@ export default class trainHis extends Component {
                                 <View style={{ width: widthSrc, height: 1, backgroundColor: '#D8D8D8' }}></View>
                                 <Text style={{ marginTop: 7, fontSize: 12 }} onPress={() => this._selectHisShow()}>跑步历史</Text>
                             </View>
-                        </View> : <View style={[styles.innerContainer]}  >
+                        </View> : <View style={[styles.innerContainer]} onPress={()=>this._toCancel} >
                                 <View style={{ width: widthSrc - 80, height: widthSrc - 80, backgroundColor: '#FFFFFF', borderRadius: 5, alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 17, marginTop: 20 }}>分享到</Text>
                                     <ListView
@@ -191,6 +193,15 @@ export default class trainHis extends Component {
 }
 
 const styles = StyleSheet.create({
+    overlay:{
+        position:'absolute',
+        top:0,
+        right:0,
+        bottom:0,
+        left:0,
+        opacity:0.4,
+        backgroundColor:'#000',
+    },
     row: {
         width: 80,
         height: 80,
@@ -204,19 +215,17 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     icon_left: {
-        width: 2,
+        width: 23,
         height: 23
     },
     grayBack: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         alignItems: 'center',
     },
     innerContainer: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         justifyContent: 'center',
         alignItems: 'center',
     },

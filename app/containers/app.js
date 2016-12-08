@@ -23,6 +23,9 @@ import SplashView from './splash.js';
 import TrainHisView from './trainHis.js';
 import UserInfoView from './UserInfo';
 import PostDynamicView from './PostDynamic';
+import RegOrLoginView from './regOrLogin';
+import RegView from './reg';
+import LoginView from './login';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -82,17 +85,17 @@ class App extends React.Component {
                 return (
                     <PostScsView {...route.params} navigator={navigator} route={route} />
                 )
-            case 'tweetDetails':
+            case 'regOrLogin':
                 return (
-                    <TweetDetailsView {...route.params} navigator={navigator} route={route} />
+                    <RegOrLoginView {...route.params} navigator={navigator} route={route} />
                 )
-            case 'comment':
+            case 'reg':
                 return (
-                    <CommentView navigator={navigator} route={route} />
+                    <RegView navigator={navigator} route={route} />
                 )
-            case 'photoBrowser':
+            case 'login':
                 return (
-                    <PhotoBrowserView {...route.params} navigator={navigator} />
+                    <LoginView {...route.params} navigator={navigator} />
                 )
             default:
                 break
@@ -102,7 +105,8 @@ class App extends React.Component {
     _configureScene(route, routeStack) {
         switch (route.id) {
             case 'tweet':
-            case 'webview':
+            case 'reg':
+            case 'login':
             case 'PostScs':
                 return Navigator.SceneConfigs.FloatFromBottom
             default:

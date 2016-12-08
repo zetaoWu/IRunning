@@ -20,6 +20,25 @@
             "console": "internalConsole",
             "sourceMaps": false,
             "outFiles": []
+        },{
+            "name": "Debug Android",
+            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+            "type":"reactnative",
+            "request": "launch",
+            "platform": "android",
+            "internalDebuggerPort": 9090,
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/.vscode/.react"
+        },{
+            "name": "Debug IOS",
+            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+            "type":"reactnative",
+            "request":"launch",
+            "platform": "ios",
+            "target":"iPhone 6s",
+            "internalDebuggerPort": 9090,
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/.vscode/.react"
         },
         {
             "name": "附加",
