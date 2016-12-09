@@ -1,60 +1,43 @@
 import React, { Component } from 'react';
+
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
-    View,
-    Platform,
-    UIManager,
-    TouchableOpacity,
-    LayoutAnimation,
-    Animated,
-    Dimensions,
-    Image,
-    Easing,
-    BackAndroid,
-    ToastAndroid,
-    TouchableNativeFeedback,
-    TouchableWithoutFeedback,
-    StatusBar,
     WebView,
-    ScrollView,
+    View,
+    Text,
+    Dimensions,
 } from 'react-native';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
-export default class findPage extends Component {
+export default class Blog extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            url: 'http://xiaowublog.sxl.cn/',
+            url: this.props.url,
         }
-    }
-
-    _scrollView(event) {
-        console.log(event.nativeEvent.contentOffset.y + '-----111---');
     }
 
     render() {
         return (
-
-            <ScrollView
-                style={styles.container}
-                onScroll={(e) => this._scrollView(e)}>
+            <View>
                 <View style={styles.top}>
                     <Text style={{ color: '#FFFFFF', fontSize: 16 }}>博客</Text>
                 </View>
-            </ScrollView>
-
+                <WebView
+                    automaticallyAdjustContentInsets={true}
+                    style={styles.webView}
+                    mediaPlaybackRequiresUserAction={true}
+                    source={{ uri: this.state.url }}
+                    javaScriptEnabled={true}
+                    ></WebView>
+            </View>
         );
-    }
+    };
 }
 const styles = StyleSheet.create({
     webView: {
         width: widthSrc,
         height: heightSrc,
-    },
-    container: {
-        flex: 1,
     },
     top: {
         paddingLeft: 10,
@@ -63,6 +46,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#453d4b',
+        marginTop: 20,
         width: Dimensions.get('window').width,
         height: 50,
     }

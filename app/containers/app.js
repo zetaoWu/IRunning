@@ -26,6 +26,7 @@ import PostDynamicView from './PostDynamic';
 import RegOrLoginView from './regOrLogin';
 import RegView from './reg';
 import LoginView from './login';
+import BlogView from './Blog';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -39,7 +40,7 @@ class App extends React.Component {
 
     render() {
         var splashName = 'splash';
-        
+
         return (
             <View style={{ width: widthSrc, height: heightSrc }}>
                 <StatusBar
@@ -75,7 +76,7 @@ class App extends React.Component {
                 )
             case 'UserInfo':
                 return (
-                    <UserInfoView {...route.params}  navigator={navigator} route={route} />
+                    <UserInfoView {...route.params} navigator={navigator} route={route} />
                 )
             case 'PostDynamic':
                 return (
@@ -97,6 +98,8 @@ class App extends React.Component {
                 return (
                     <LoginView {...route.params} navigator={navigator} />
                 )
+            case 'blog':
+                return (<BlogView {...route.params} navigator={navigator} />)
             default:
                 break
         }
@@ -104,7 +107,7 @@ class App extends React.Component {
 
     _configureScene(route, routeStack) {
         switch (route.id) {
-            case 'tweet':
+            case 'blog':
             case 'reg':
             case 'login':
             case 'PostScs':

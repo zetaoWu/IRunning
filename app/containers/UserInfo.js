@@ -14,6 +14,7 @@ import {
     StatusBar,
     Platform,
     BackAndroid,
+    Linking,
 } from 'react-native';
 
 var widthSrc = Dimensions.get('window').width;
@@ -64,23 +65,33 @@ export default class UserInfo extends Component {
         }
     }
 
+    _webView() {
+        this.props.navigator.push({
+            id: 'blog',
+            params: {
+                url: 'http://xiaowublog.sxl.cn/',
+            }
+        });
+    }
+
     render() {
         return (
             <View style={{ backgroundColor: '#FFFFFF', marginTop: 20, height: heightSrc, width: widthSrc }}>
                 <View style={{ width: widthSrc, height: 40, backgroundColor: '#453d4b' }}>
                     <TouchableOpacity onPress={() => this._backFunction()}>
-                        <Image style={{ width: 35, height: 35, marginLeft: 10, marginTop: 10 }} source={require('../img/backicon.png')} resizeMode='center'></Image>
+                        <Image style={{ width: 40, height: 40, marginLeft: 10}} source={require('../img/backicon.png')} resizeMode='center'></Image>
                     </TouchableOpacity>
                 </View>
 
                 <ScrollView>
                     <View style={{ flex: 1, backgroundColor: '#453d4b', height: 240, justifyContent: 'center', alignItems: 'center' }}>
-                        <Image style={{ width: 70, height: 70, borderRadius: 70, marginTop: 20 }} source={require('../img/backicon.png')} resizeMode='center'></Image>
+                        <Image style={{ width: 80, height: 80, borderRadius: 80, marginTop: 20 }} source={require('../img/head.png')} resizeMode='center'></Image>
                         <Text style={{ color: '#FFFFFF', fontSize: 15 }}>NICKNAME</Text>
                         <Text style={{ color: '#D3D3D3', fontSize: 11, marginTop: 10 }}>上海,浦东新区</Text>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
                             <Text style={{ color: '#D3D3D3', fontSize: 12 }}>1 关注 </Text><Text style={{ color: '#D3D3D3', fontSize: 12, marginLeft: 10 }}>5 粉丝</Text>
                         </View>
+                        <Text style={{ color: '#FFFFFF', marginTop: 5, fontSize: 12 }} onPress={() => this._webView()}>http://xiaowublog.sxl.cn/</Text>
                         <Image style={{ marginLeft: 300, width: 17, height: 17, marginTop: 5 }} source={require('../img/camera.png')} resizeMode='center'></Image>
                     </View>
 
