@@ -105,7 +105,7 @@ export default class main extends Component {
                         renderIcon={() => <Image style={{ width: 25, height: 25 }} source={require('../img/sharkoff.png')} />}
                         renderSelectedIcon={() => <Image style={{ width: 25, height: 25 }} source={require('../img/sharkon.png')} />}
                         onPress={() => this.setState({ selectedTab: 'home' })}>
-                        <HomePage  navigator={that.props.navigator} username={num} />
+                        <HomePage navigator={that.props.navigator} username={num} />
                     </TabNavigator.Item>
 
                     <TabNavigator.Item
