@@ -144,6 +144,12 @@ export default class mePage extends Component {
         }
     }
 
+    _onJumpSet(){
+        this.props.navigator.push({
+            id:'appSet',
+        });
+    }
+
     render() {
         return (
             <View>
@@ -173,7 +179,7 @@ export default class mePage extends Component {
                         <TouchableOpacity>
                             <Image style={{ width: 23, height: 23 }} source={require('../../img/notice.png')} resizeMode='contain'></Image>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>this._onJumpSet()}>
                             <Image style={{ width: 20, height: 20, marginLeft: 15 }} source={require('../../img/set.png')} resizeMode='contain'></Image>
                         </TouchableOpacity>
                     </View>

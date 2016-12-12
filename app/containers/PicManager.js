@@ -97,7 +97,6 @@ export default class PicManager extends Component {
                         imageWidth={widthSrc}
                         imageHeight={heightSrc}>
                         <Image
-                            {...this._panResponder.panHandlers}
                             style={[styles.img]} source={require('../img/head.png')} resizeMode='contain'></Image>
                     </ImageZoom>
                 </View>

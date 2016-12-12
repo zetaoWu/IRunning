@@ -31,6 +31,9 @@ import PicManagerView from './PicManager';
 import AddClassComponent from './addClass';
 import RunComponent from './run';
 import RunSetComponent from './runSet.js'
+import AppSetView from './AppSet.js';
+import TrainDetailView from './TrainDetail.js';
+import CommendReadView from './CommendRead.js';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -111,6 +114,12 @@ class App extends React.Component {
                 return (<RunComponent {...route.params} navigator={navigator} />)
             case 'runSetComponent':
                 return (<RunSetComponent {...route.params} navigator={navigator} />)
+            case 'appSet':
+                return (<AppSetView {...route.params} navigator={navigator} />);
+            case 'trainDetail':
+                return (<TrainDetailView {...route.params} navigator={navigator} />);
+            case 'commendRead':
+                return (<CommendReadView {...route.params} navigator={navigator} />);
             default:
                 break
         }

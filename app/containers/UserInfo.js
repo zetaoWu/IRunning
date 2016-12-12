@@ -83,9 +83,9 @@ export default class UserInfo extends Component {
     render() {
         return (
             <View style={{ backgroundColor: '#FFFFFF', marginTop: 20, height: heightSrc, width: widthSrc }}>
-                <View style={{ width: widthSrc, height: 40, backgroundColor: '#453d4b' }}>
+                <View style={{ width: widthSrc, height: 35, backgroundColor: '#453d4b' }}>
                     <TouchableOpacity onPress={() => this._backFunction()}>
-                        <Image style={{ width: 40, height: 40, marginLeft: 10 }} source={require('../img/backicon.png')} resizeMode='center'></Image>
+                        <Image style={{ width: 20, height: 25, marginLeft: 15,marginTop:12}} source={require('../img/backicon.png')} resizeMode='cover'></Image>
                     </TouchableOpacity>
                 </View>
 

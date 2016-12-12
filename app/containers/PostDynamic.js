@@ -107,6 +107,8 @@ export default class PostDynamic extends Component {
                     { text: '不发了', onPress: () => this._returnBef() },
                     { text: '再看看', onPress: () => console.log('再看看') },
                 ]);
+        }else{
+            this._returnBef();
         }
     }
     _renderSub() {

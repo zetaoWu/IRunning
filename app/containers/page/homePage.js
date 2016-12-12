@@ -9,6 +9,7 @@ import {
     ScrollView,
     ToastAndroid,
     TouchableWithoutFeedback,
+    TouchableHighlight,
     StatusBar,
 } from 'react-native';
 
@@ -163,7 +164,7 @@ export default class homePage extends Component {
         const { navigator } = this.props;
         if (navigator) {
             navigator.push({
-                id:'runComponent',
+                id: 'runComponent',
             })
         }
     }
@@ -193,27 +194,45 @@ export default class homePage extends Component {
         );
     }
 
+    _pressRow(rowData) {
+        this.props.navigator.push({
+            id: 'trainDetail',
+            params: { data: rowData }
+        });
+    }
+
+    _commendRead(rowData) {
+        this.props.navigator.push({
+            id: 'commendRead',
+            params: { data: rowData }
+        });
+    }
+
     _renItemRecomRead(rowData, rowID) {
         return (
-            <View style={{ justifyContent: 'space-between', width: 260, marginRight: 7 }}>
-                <Image style={{ marginRight: 10, width: 260, height: 130 }} resizeMode='cover' source={{ uri: rowData.platImg }}></Image>
-                <Text style={{ alignSelf: 'center', justifyContent: 'center', fontSize: 17, height: 20 }} numberOfLines={1}>{rowData.title}</Text>
-                <Text style={{ alignSelf: 'center', justifyContent: 'center', fontSize: 13, height: 20, marginTop: 3 }} numberOfLines={1}>{rowData.introduction}</Text>
-            </View>
+            <TouchableHighlight onPress={() => this._commendRead(rowData)}>
+                <View style={{ justifyContent: 'space-between', width: 260, marginRight: 7 }}>
+                    <Image style={{ marginRight: 10, width: 260, height: 130 }} resizeMode='cover' source={{ uri: rowData.platImg }}></Image>
+                    <Text style={{ alignSelf: 'center', justifyContent: 'center', fontSize: 17, height: 20 }} numberOfLines={1}>{rowData.title}</Text>
+                    <Text style={{ alignSelf: 'center', justifyContent: 'center', fontSize: 13, height: 20, marginTop: 3 }} numberOfLines={1}>{rowData.introduction}</Text>
+                </View>
+            </TouchableHighlight>
         );
     }
     // <Text style={{ width: widthSrc, height: 100 }}>{rowData}</Text>
 
     _renderItemData(rowData, rowID) {
         return (
-            <Image style={{ width: widthSrc, height: 130, marginTop: 2, justifyContent: 'space-between' }} resizeMode='cover' source={{ uri: rowData.trainID.platImg }}>
-                <Text style={{ color: '#FFFFFF', fontSize: 20, marginLeft: 15, marginTop: 15 }}>{rowData.trainID.name}</Text>
-                <View></View>
-                <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
-                    <Image style={[styles.splash_icon, { marginLeft: 3 }]} resizeMode='contain' source={require('image!ic_launcher')}></Image>
-                    <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 3 }}>{rowData.trainID.time}分钟</Text>
-                </View>
-            </Image>
+            <TouchableHighlight onPress={() => this._pressRow(rowData)}>
+                <Image style={{ width: widthSrc, height: 130, marginTop: 2, justifyContent: 'space-between' }} resizeMode='cover' source={{ uri: rowData.trainID.platImg }}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 20, marginLeft: 15, marginTop: 15 }}>{rowData.trainID.name}</Text>
+                    <View></View>
+                    <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
+                        <Image style={[styles.splash_icon, { marginLeft: 3 }]} resizeMode='contain' source={require('image!ic_launcher')}></Image>
+                        <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 3 }}>{rowData.trainID.time}分钟</Text>
+                    </View>
+                </Image>
+            </TouchableHighlight>
         );
     }
 
@@ -226,11 +245,15 @@ export default class homePage extends Component {
     }
 
     _renderComReadHead() {
-        return (<View style={{ height: 40, width: widthSrc - 20, marginLeft: 10, marginRight: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Text>推荐阅读</Text>
-            <Text></Text>
-            <Image style={styles.icon_left} resizeMode='contain' source={require('image!jumpto')}></Image>
-        </View>);
+        return (
+
+            <View style={{ height: 40, width: widthSrc - 20, marginLeft: 10, marginRight: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Text>推荐阅读</Text>
+                <Text></Text>
+                <Image style={styles.icon_left} resizeMode='contain' source={require('image!jumpto')}></Image>
+            </View>
+
+        );
     }
 
     _renderHead() {
@@ -254,8 +277,8 @@ export default class homePage extends Component {
         if (navigator) {
             navigator.push({
                 name: 'TrainHisView',
-                title:'所有训练历史',
-                id:'trainHis',
+                title: '所有训练历史',
+                id: 'trainHis',
             });
         }
     }
@@ -276,7 +299,7 @@ export default class homePage extends Component {
                     <TouchableWithoutFeedback onPress={() => this._toTrainHis()}>
                         <View >
                             <TouchableWithoutFeedback >
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: widthSrc - 20, marginLeft: 10,marginTop:10,height: 30 }} >
+                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: widthSrc - 20, marginLeft: 10, marginTop: 10, height: 30 }} >
                                     <Text style={{ fontSize: 13 }}>总共训练</Text>
                                     <Text></Text>
                                     <Image style={[styles.icon_left,]} resizeMode='contain' source={require('image!jumpto')}></Image>
