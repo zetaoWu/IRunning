@@ -163,8 +163,7 @@ export default class homePage extends Component {
         const { navigator } = this.props;
         if (navigator) {
             navigator.push({
-                name: 'RunComponent',
-                component: RunComponent,
+                id:'runComponent',
             })
         }
     }
@@ -173,8 +172,7 @@ export default class homePage extends Component {
         const {navigator} = this.props;
         if (navigator) {
             navigator.push({
-                name: 'AddClassComponent',
-                component: AddClassComponent,
+                id: 'addClass',
             });
         }
     }

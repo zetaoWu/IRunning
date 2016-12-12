@@ -74,19 +74,27 @@ export default class UserInfo extends Component {
         });
     }
 
+    _picManage(){
+        this.props.navigator.push({
+            id:'picManager',
+        });
+    }
+
     render() {
         return (
             <View style={{ backgroundColor: '#FFFFFF', marginTop: 20, height: heightSrc, width: widthSrc }}>
                 <View style={{ width: widthSrc, height: 40, backgroundColor: '#453d4b' }}>
                     <TouchableOpacity onPress={() => this._backFunction()}>
-                        <Image style={{ width: 40, height: 40, marginLeft: 10}} source={require('../img/backicon.png')} resizeMode='center'></Image>
+                        <Image style={{ width: 40, height: 40, marginLeft: 10 }} source={require('../img/backicon.png')} resizeMode='center'></Image>
                     </TouchableOpacity>
                 </View>
 
                 <ScrollView>
                     <View style={{ flex: 1, backgroundColor: '#453d4b', height: 240, justifyContent: 'center', alignItems: 'center' }}>
-                        <Image style={{ width: 80, height: 80, borderRadius: 80, marginTop: 20 }} source={require('../img/head.png')} resizeMode='center'></Image>
-                        <Text style={{ color: '#FFFFFF', fontSize: 15 }}>NICKNAME</Text>
+                        <TouchableOpacity onPress={()=>this._picManage()}>
+                            <Image style={{ width: 80, height: 80, borderRadius: 80, marginTop: 20 }} source={require('../img/head.png')} resizeMode='cover'></Image>
+                        </TouchableOpacity>
+                        <Text style={{ color: '#FFFFFF', fontSize: 15, marginTop: 10 }}>NICKNAME</Text>
                         <Text style={{ color: '#D3D3D3', fontSize: 11, marginTop: 10 }}>上海,浦东新区</Text>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
                             <Text style={{ color: '#D3D3D3', fontSize: 12 }}>1 关注 </Text><Text style={{ color: '#D3D3D3', fontSize: 12, marginLeft: 10 }}>5 粉丝</Text>

@@ -17,34 +17,58 @@ import {
     TouchableNativeFeedback,
     TouchableWithoutFeedback,
     StatusBar,
+    PanResponder,
     WebView,
     ScrollView,
 } from 'react-native';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
+import { toastShort } from '../../utils/ToastUtil';
+var _scrollView;
 export default class findPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             url: 'http://xiaowublog.sxl.cn/',
+            enableScroll: true,
         }
     }
 
     _scrollView(event) {
-        console.log(event.nativeEvent.contentOffset.y + '-----111---');
+        toastShort(event.nativeEvent.contentOffset.y + "y--" + this.state.oldtop);
     }
 
     render() {
         return (
-
-            <ScrollView
-                style={styles.container}
-                onScroll={(e) => this._scrollView(e)}>
-                <View style={styles.top}>
-                    <Text style={{ color: '#FFFFFF', fontSize: 16 }}>博客</Text>
-                </View>
-            </ScrollView>
-
+            <View style={styles.container}
+                >
+                <ScrollView
+                    ref={(scrollview) => _scrollview = scrollview}
+                    style={styles.container}
+                    scrollEnabled={this.state.enableScroll}
+                    onScroll={(e) => this._scrollView(e)}
+                    >
+                    <View
+                        style={[styles.top]}>
+                        <Text style={{ color: '#FFFFFF', fontSize: 16 }} onPress={() => this.__scrollView()}>博客</Text>
+                    </View>
+                    <View
+                        >
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                        <Text style={{ fontSize: 50 }}>wwwwwww</Text>
+                    </View>
+                </ScrollView>
+            </View>
         );
     }
 }

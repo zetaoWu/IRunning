@@ -50,8 +50,7 @@ export default class run extends Component {
         console.log("1123" + this);
         if (navigator) {
             navigator.push({
-                name: 'RunSetComponent',
-                component: RunSetComponent,
+                id:'runSetComponent',
             });
         }
     }

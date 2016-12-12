@@ -11,6 +11,7 @@
     "react-native": "0.36.0",
     "react-native-amap-location": "0.0.4",
     "react-native-image-crop-picker": "^0.10.5",
+    "react-native-image-pan-zoom": "^1.1.10",
     "react-native-image-picker": "^0.24.0",
     "react-native-navbar": "^1.5.4",
     "react-native-root-toast": "^1.0.3",

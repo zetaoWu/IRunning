@@ -27,6 +27,10 @@ import RegOrLoginView from './regOrLogin';
 import RegView from './reg';
 import LoginView from './login';
 import BlogView from './Blog';
+import PicManagerView from './PicManager';
+import AddClassComponent from './addClass';
+import RunComponent from './run';
+import RunSetComponent from './runSet.js'
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -40,7 +44,6 @@ class App extends React.Component {
 
     render() {
         var splashName = 'splash';
-
         return (
             <View style={{ width: widthSrc, height: heightSrc }}>
                 <StatusBar
@@ -100,6 +103,14 @@ class App extends React.Component {
                 )
             case 'blog':
                 return (<BlogView {...route.params} navigator={navigator} />)
+            case 'picManager':
+                return (<PicManagerView {...route.params} navigator={navigator} />)
+            case 'addClass':
+                return (<AddClassComponent {...route.params} navigator={navigator} />)
+            case 'runComponent':
+                return (<RunComponent {...route.params} navigator={navigator} />)
+            case 'runSetComponent':
+                return (<RunSetComponent {...route.params} navigator={navigator} />)
             default:
                 break
         }
