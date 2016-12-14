@@ -34,6 +34,7 @@ import RunSetComponent from './runSet.js'
 import AppSetView from './AppSet.js';
 import TrainDetailView from './TrainDetail.js';
 import CommendReadView from './CommendRead.js';
+import MapView from './MapView.js';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -120,6 +121,8 @@ class App extends React.Component {
                 return (<TrainDetailView {...route.params} navigator={navigator} />);
             case 'commendRead':
                 return (<CommendReadView {...route.params} navigator={navigator} />);
+            case 'mapview':
+                return (<MapView {...route.params} navigator={navigator} />);
             default:
                 break
         }

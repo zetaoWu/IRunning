@@ -4,7 +4,6 @@ import {
     Text,
     View,
     Platform,
-    UIManager,
     TouchableOpacity,
     LayoutAnimation,
     Animated,
@@ -16,6 +15,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 
+var widthSrc = Dimensions.get('window').width;
 import RunSetComponent from './runSet.js'
 export default class run extends Component {
     constructor(props) {
@@ -47,7 +47,6 @@ export default class run extends Component {
 
     _setFunction() {
         const {navigator} = this.props;
-        console.log("1123" + this);
         if (navigator) {
             navigator.push({
                 id:'runSetComponent',
@@ -61,7 +60,19 @@ export default class run extends Component {
             navigator.pop();
         }
     }
+
+    _clickFunc(ops){
+        switch(ops){
+            case 'mapview':
+                this.props.navigator.push({
+                    id:'mapview'
+                });
+            break;
+        }
+    }
     render() {
+
+        var _this=this;
         return (
             <View style={styles.container}>
 
@@ -88,9 +99,12 @@ export default class run extends Component {
                     <Text style={{ fontSize: 100, color: "#FFFFFF", }}>0.00</Text>
                     <Text style={{ fontSize: 17, color: "#FFFFFF", marginBottom: 23 }}>公里</Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginTop: 20, alignItems: 'center' }}>
-                    <Text style={{ color: '#FFFFFF', marginLeft: 20 }}>GPS</Text>
-                    <View style={{ backgroundColor: '#FFFFFF', marginLeft: 10, height: 0.25, width: Dimensions.get('window').width - 70 }}></View>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around',marginLeft:25,marginRight:25,marginTop: 20,width:widthSrc-50, alignItems: 'center'}}>
+                    <Text style={{ color: '#FFFFFF' }}>GPS</Text>
+                    <View style={{ backgroundColor: '#FFFFFF', marginLeft: 10, height: 0.25, width: Dimensions.get('window').width - 140 }}></View>
+                    <TouchableWithoutFeedback onPress={()=>this._clickFunc('mapview')}>
+                        <Image style={[styles.icon_right]} resizeMode='contain' source={require('../img/local.png')}></Image>
+                    </TouchableWithoutFeedback>
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 30, paddingRight: 30, marginTop: 40 }}>

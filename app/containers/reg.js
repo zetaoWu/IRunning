@@ -22,7 +22,7 @@ import {
 
 var widthSrc = Dimensions.get('window').width;
 import { toastShort } from '../utils/ToastUtil';
-import { GET_CHECK_NUM,BASE_SQL } from '../url';
+import { GET_CHECK_NUM, BASE_SQL } from '../url';
 import { config } from '../config';
 import regCheckNum from './regCheckNum';
 export default class reg extends Component {
@@ -59,11 +59,7 @@ export default class reg extends Component {
     };
 
     _onBackFunction() {
-        console.log(this);
-        const { navigator } = this.props;
-        if (navigator) {
-            navigator.pop();
-        }
+        this.props.navigator.pop();
     }
 
     _onPressButton() {
