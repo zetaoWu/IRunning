@@ -1,5 +1,4 @@
 package com.keepdemo;
-
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
@@ -26,7 +25,8 @@ public class MainApplication extends Application implements ReactApplication {
                     new MainReactPackage(),
                     new PickerPackage(),
                     new ImagePickerPackage(),
-                    new AMapLocationReactPackage()
+                    new AMapLocationReactPackage(),
+                    new AMapReactPackage()
             );
         }
     };
@@ -35,4 +35,5 @@ public class MainApplication extends Application implements ReactApplication {
     public ReactNativeHost getReactNativeHost() {
         return mReactNativeHost;
     }
+
 }

@@ -37,5 +37,5 @@ npm-debug.log
 # BUCK
 buck-out/
 \.buckd/
-android/app/libs
-android/keystores/debug.keystore
+# android/app/libs
+# android/keystores/debug.keystore

@@ -85,6 +85,13 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
+
+    sourceSets{
+        main{
+            jniLibs.srcDirs=['libs']
+        }
+    }
+
     defaultConfig {
         applicationId "com.keepdemo"
         minSdkVersion 16
@@ -149,6 +156,7 @@ dependencies {
     // From node_modules
     compile project(':react-native-image-picker')
     compile files('libs/AMap_Location_V3.2.0_20161205.jar')
+    compile files('libs/AMap_Search_V3.3.0_20160616.jar')
 }
 
 // Run this once to be able to run the application with BUCK

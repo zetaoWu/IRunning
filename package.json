@@ -1,6 +1,6 @@
 {
-  "name": "KEEPDemo",
-  "version": "0.0.1",
+  "name": "1",
+  "version": "1.1.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "15.3.2",
     "react-native": "0.36.0",
+    "react-native-amap": "0.0.3",
     "react-native-amap-location": "0.0.4",
     "react-native-image-crop-picker": "^0.10.5",
     "react-native-image-pan-zoom": "^1.1.10",
@@ -34,5 +35,20 @@
     "jest": "16.0.2",
     "jest-react-native": "16.0.0",
     "react-test-renderer": "15.3.2"
-  }
+  },
+  "description": "React native开发的一款运动软件  练手中",
+  "main": "123456",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zetaoWu/IRunning.git"
+  },
+  "keywords": [
+    "123456"
+  ],
+  "author": "123",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zetaoWu/IRunning/issues"
+  },
+  "homepage": "https://github.com/zetaoWu/IRunning#readme"
 }
