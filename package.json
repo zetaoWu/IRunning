@@ -20,6 +20,7 @@
     "react-native-storage": "^0.1.4",
     "react-native-swiper": "^1.5.3",
     "react-native-tab-navigator": "^0.3.3",
+    "react-native-update": "^4.0.0",
     "react-redux": "^4.4.5",
     "react-timer-mixin": "^0.13.3",
     "redux": "^3.6.0",

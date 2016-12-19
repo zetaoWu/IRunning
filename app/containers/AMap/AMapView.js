@@ -10,9 +10,7 @@ import AMapAnnotationView from './AMapAnnotationView';
 import AMapCalloutView from './AMapCalloutView';
 
 class AMapView extends React.Component {
-
   static propTypes = {
-    name:'AMapView',
     logoPosition: PropTypes.oneOf(['center', 'left', 'right']),
     mapType: PropTypes.oneOf(['normal', 'satellite', 'night', 'navi']),
     myLocationEnabled: PropTypes.bool,

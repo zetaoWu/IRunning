@@ -25,6 +25,7 @@ project.xcworkspace
 # Android/IJ
 #
 *.iml
+.bin
 .idea
 .gradle
 local.properties
@@ -39,3 +40,4 @@ buck-out/
 \.buckd/
 # android/app/libs
 # android/keystores/debug.keystore
+.update

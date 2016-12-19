@@ -35,35 +35,36 @@ export default class MapView extends Component {
         };
     }
 
-    async componentWillMount() {
-        try {
-            const granted = await PermissionsAndroid.requestPermission(
-                PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
-                {
-                    'title': '调用权限',
-                    'message': '需要获取您的位置信息,是否允许？'
-                }
-            );
-            if (granted) {
-                toastShort("you can use location");
-                DeviceEventEmitter.addListener("onLocationChangedAMAPLOCATION", (data) => { this.setState({ data: JSON.stringify(data) }); });
-                AMapLocation.startLocation({
-                    accuracy: 'HighAccuracy',
-                    killProcess: true,
-                    needDetail: true,
-                });
-            } else {
-                toastShort("do't use loc∫ation");
-            }
-        } catch (err) {
-            console.warn(err);
-        }
-    }
+    // async componentWillMount() {
+    //     try {
+    //         const granted = await PermissionsAndroid.requestPermission(
+    //             PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+    //             {
+    //                 'title': '调用权限',
+    //                 'message': '需要获取您的位置信息,是否允许？'
+    //             }
+    //         );
+    //         if (granted) {
+    //             toastShort("you can use location");
+    //             DeviceEventEmitter.addListener("onLocationChangedAMAPLOCATION", (data) => { this.setState({ data: JSON.stringify(data) }); });
+    //             AMapLocation.startLocation({
+    //                 accuracy: 'HighAccuracy',
+    //                 killProcess: true,
+    //                 needDetail: true,
+    //             });
+    //         } else {
+    //             toastShort("do't use loc∫ation");
+    //         }
+    //     } catch (err) {
+    //         console.warn(err);
+    //     }
+    // }
 
-    componentWillUnmount() {
-        AMapLocation.stopLocation();
-        DeviceEventEmitter.removeListener("onLocationChangedAMAPLOCATION");
-    }
+    // componentWillUnmount() {
+    //     AMapLocation.stopLocation();
+    //     DeviceEventEmitter.removeListener("onLocationChangedAMAPLOCATION");
+    // }
+    
     // <Text style={{ fontSize: 15, marginTop: 24 }}>{this.state.data}</Text>
     render() {
         return (
@@ -71,7 +72,10 @@ export default class MapView extends Component {
                 <AMapView style={styles.container} compassEnabled={true}
                     defaultRegion={{ "latitude": this.state.latitude, "longitude": this.state.longitude, "latitudeDelta": 0.5, "longitudeDelta": 0.5 }}
                     region={{ "latitude": this.state.latitude, "longitude": this.state.longitude, "latitudeDelta": 0.5, "longitudeDelta": 0.5 }}
-                    myLocationEnabled={true}
+                    myLocationType={'locate'}
+                    mapType={'normal'}
+                    myLocationButtonEnabled={true}
+                    allGesturesEnabled={true}
                     >
                     <AMapView.Annotation coordinate={{ "latitude": this.state.latitude, "longitude": this.state.longitude }}
                         title="aaa" subtitle="bbbb" enabled={true} selected={true} canShowCallout={true}
