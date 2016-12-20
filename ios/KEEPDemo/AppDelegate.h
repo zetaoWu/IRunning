@@ -9,6 +9,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "RCTHotUpdate.h"
+
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;

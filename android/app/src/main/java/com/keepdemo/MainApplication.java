@@ -36,8 +36,6 @@ public class MainApplication extends Application implements ReactApplication {
                     new AMapReactPackage()
             );
         }
-
-
     };
 
     @Override

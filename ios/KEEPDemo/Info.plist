@@ -50,5 +50,22 @@
 			</dict>
 		</dict>
 	</dict>
+  
+  
+  <!-- pushy-->
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSExceptionDomains</key>
+    <dict>
+      <key>reactnative.cn</key>
+      <dict>
+        <key>NSIncludesSubdomains</key>
+        <true/>
+        <key>NSExceptionAllowsInsecureHTTPLoads</key>
+        <true/>
+      </dict>
+    </dict>
+  </dict>
+
 </dict>
 </plist>
