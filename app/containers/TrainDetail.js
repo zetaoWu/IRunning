@@ -25,6 +25,29 @@ export default class TrainDetail extends Component {
             scrollOffset: 0,
         };
     }
+    componentDidMount() {
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
+        }
+    }
+
+    componentWillUnmount() {
+        if (Platform.OS === 'android') {
+            BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
+        }
+    }
+
+    onBackAndroid = () => {
+        const { navigator } = this.props;
+        const routers = navigator.getCurrentRoutes();
+        console.log('当前路由长度：' + routers.length);
+        if (routers.length > 1) {
+            navigator.pop();
+            return true;//接管默认行为  
+        }
+        return false;//默认行为  
+    };
+
 
 
     _backFunction() {
@@ -70,9 +93,9 @@ export default class TrainDetail extends Component {
                         </View>
                     </Image>
 
-                    <Text style={{ fontSize: 30,height:200}}>数据数据</Text>
-                    <Text style={{ fontSize: 30,height:200 }}>数据数据</Text>
-                    <Text style={{ fontSize: 30,height:200 }}>数据数据</Text>
+                    <Text style={{ fontSize: 30, height: 200 }}>数据数据</Text>
+                    <Text style={{ fontSize: 30, height: 200 }}>数据数据</Text>
+                    <Text style={{ fontSize: 30, height: 200 }}>数据数据</Text>
                 </ScrollView>
                 <View style={[styles.main_top, { position: 'absolute', "backgroundColor": 'rgba(69,61,75,' + opacity + ')' }]}>
                     <View style={{ flexDirection: 'row' }}>

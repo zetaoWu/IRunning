@@ -69,7 +69,7 @@ export default class AppSet extends Component {
     checkUpdate = () => {
         checkUpdate(appKey).then(info => {
             if (info.expired) {
-                Alert.alert('提示', '您的应用版本已更新,请前往应用商店下载新的版本-'+appKey, [
+                Alert.alert('提示', '您的应用版本已更新,请前往应用商店下载新的版本-', [
                     { text: '确定', onPress: () => { info.downloadUrl && Linking.openURL(info.downloadUrl) } },
                 ]);
             } else if (info.upToDate) {

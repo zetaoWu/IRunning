@@ -35,13 +35,14 @@ export default class actionPage extends Component {
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
             onMoveShouldSetPanResponder: () => true,
+         
             onPanResponderGrant: () => {
                 this._top = this.state.top
                 this._left = this.state.left
                 this.setState({ bg: 'red' })
             },
             onPanResponderMove: (evt, gs) => {
-             
+
                 this.setState({
                     top: this._top + gs.dy,
                     left: this._left + gs.dx
@@ -54,7 +55,7 @@ export default class actionPage extends Component {
                     left: this._left + gs.dx
                 })
 
-             toastShort(this.state.top + ' ' + this.state.left )
+                toastShort(this.state.top + ' ' + this.state.left + '----' + evt.pageX)
             }
         })
     }
@@ -74,17 +75,17 @@ export default class actionPage extends Component {
     }
 }
 var styles = StyleSheet.create({
-   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  rect: {
-    width: 200,
-    height: 200,
-    borderWidth: 1,
-    borderColor: 'black',
-    position: 'absolute',
-  }
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    rect: {
+        width: 200,
+        height: 200,
+        borderWidth: 1,
+        borderColor: 'black',
+        position: 'absolute',
+    }
 });
