@@ -29,42 +29,38 @@ export default class PostDynamic extends Component {
             dynamic: '',
             showVoice: false,
             subHeight: new Animated.Value(30),
+            keyHeight: 270
         }
-        this.keyboardHeight = 0
     }
 
     componentDidMount() {
-
         if (Platform.OS === 'android') {
             BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
         }
     }
 
- componentWillMount() {
-        // Keyboard events监听
-        Keyboard.addListener('keyboardWillShow',(event) => this._keyboardWillShow(event));
-        Keyboard.addListener('keyboardWillHide',() => this._keyboardWillHide());
+    componentWillMount() {
+        this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardWillShow);
+        this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardWillHide);
     }
 
     componentWillUnmount() {
         if (Platform.OS === 'android') {
             BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
         }
-        Keyboard.removeAllListeners('keyboardWillShow');
-        Keyboard.removeAllListeners('keyboardWillHide');
+        this.keyboardDidShowListener.remove();
+        this.keyboardDidHideListener.remove();
     }
 
     _keyboardWillShow = (frames) => {
-        this.keyboardHeight = frames.endCoordinates.height;
         Animated.timing(this.state.subHeight, {
             toValue: this.keyboardHeight,
             duration: 300,
         }).start();
 
-        console.log(keyboardHeight + '');
-
         this.setState({
             showKeyboard: true,
+            keyHeight: 270,
         })
     };
 
@@ -79,6 +75,7 @@ export default class PostDynamic extends Component {
 
         this.setState({
             showKeyboard: false,
+            keyHeight: 0,
         })
     };
 
@@ -107,20 +104,19 @@ export default class PostDynamic extends Component {
                     { text: '不发了', onPress: () => this._returnBef() },
                     { text: '再看看', onPress: () => console.log('再看看') },
                 ]);
-        }else{
+        } else {
             this._returnBef();
         }
     }
     _renderSub() {
         return (
-            // <View style={{ justifyContent: 'flex-end', height: heightSrc - 60 }}>
-            <Text style={{ fontSize: 30 }}>111</Text>
-            // </View>);
-        );
+            <View style={{width:widthSrc, height: heightSrc-70,position:'absolute',justifyContent:'flex-end'}}>
+                <Text style={[styles.menu, {bottom: this.state.keyHeight }]}>111</Text>
+            </View>);
     }
 
     _surePost() {
-        toastShort('发布');   
+        toastShort('发布');
         this.props.navigator.push({
             id: 'PostScs',
         });
@@ -142,6 +138,8 @@ export default class PostDynamic extends Component {
                             : <Text style={{ fontSize: 15, color: '#b1b1b1' }}>发布</Text>
                     }
                 </View>
+                        
+                {this._renderSub()}
 
                 <TextInput style={styles.input}
                     multiline={true}
@@ -154,13 +152,9 @@ export default class PostDynamic extends Component {
                     onChangeText={(text) => {
                         this.setState({ dynamic: text })
                     } }
-
                     value={this.state.dynamic}
                     ></TextInput>
-
-                {this._renderSub()}
-
-            </View >
+            </View>
         );
     }
 }
@@ -185,8 +179,12 @@ const styles = StyleSheet.create({
     },
     input: {
         width: widthSrc,
-        height: heightSrc - 200,
+        height: heightSrc,
         textAlignVertical: "top",
         flex: 1,
     },
+    menu: {
+        fontSize: 30,
+        width:widthSrc,
+    }
 });

@@ -77,6 +77,7 @@ export default class regOrLogin extends Component {
             });
         }
     }
+                // id:'boundView',
 
     render() {
         let self = this;
