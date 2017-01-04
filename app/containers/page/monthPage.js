@@ -63,7 +63,7 @@ export default class monthPage extends Component {
                     </View>
 
                     <TouchableOpacity onPress={() => { _listview.scrollTo({ x: 10000000 }); } }>
-                        <View style={{ height: 10, marginTop: 10, width: widthSrc, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
+                        <View style={{ height: 20, marginTop: 10, width: widthSrc, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
                             <Text>0次</Text>
                             <Text>0千卡</Text>
                         </View>

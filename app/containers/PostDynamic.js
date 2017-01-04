@@ -207,7 +207,7 @@ export default class PostDynamic extends Component {
         var isPubSecret = this.state.isPubSecret;
         var selLocation = this.state.selLocation;
         return (
-            <View style={{ bottom: this.state.keyHeight, width: widthSrc, flex: 1, position: 'absolute', justifyContent: 'flex-end' }}>
+            <View style={{ bottom: this.state.keyHeight, width: widthSrc, flex: 1, position: 'absolute', justifyContent: 'flex-end',zIndex:1}}>
                 <View style={styles.firstMenu}>
                     <Image style={{ width: 23, height: 20 }} source={require('../img/location_black.png')} resizeMode="center"></Image>
                     {
@@ -223,7 +223,6 @@ export default class PostDynamic extends Component {
                                 dataSource={this.state.dataSource}
                                 renderRow={(rowData, sectionID, rowid) => this._renderItemData(rowData, rowid)}>
                             </ListView>
-
                     }
                     <TouchableOpacity onPress={() => this._isPubSecret()}>
                         {
@@ -248,7 +247,6 @@ export default class PostDynamic extends Component {
     }
 
     _surePost() {
-        toastShort('发布');
         this.props.navigator.push({
             id: 'PostScs',
         });
@@ -257,7 +255,7 @@ export default class PostDynamic extends Component {
 
     render() {
         return (
-            <View style={{ backgroundColor: '#FFFFFF', height: heightSrc, marginTop: 20, width: widthSrc }}>
+            <View style={{ backgroundColor: '#FFFFFF', height: heightSrc, marginTop: 20, width: widthSrc}}>
                 <Modal
                     animationType={"fade"}
                     transparent={true}
@@ -285,7 +283,7 @@ export default class PostDynamic extends Component {
                     {
                         this.state.dynamic != '' ?
                             <TouchableOpacity onPress={() => this._surePost()}>
-                                <Text style={{ fontSize: 15, color: '#006400' }}>发布</Text>
+                                <Text style={{ fontSize: 15, color: '#00aa00' }}>发布</Text>
                             </TouchableOpacity>
                             : <Text style={{ fontSize: 15, color: '#b1b1b1' }}>发布</Text>
                     }
@@ -330,7 +328,7 @@ const styles = StyleSheet.create({
     },
     input: {
         width: widthSrc,
-        height: 200,
+        flex:1,
         textAlignVertical: "top",
         paddingLeft: 20,
         paddingRight: 20,

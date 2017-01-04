@@ -32,7 +32,7 @@ import AddClassComponent from './addClass';
 import RunComponent from './run';
 import RunSetComponent from './runSet.js'
 import AppSetView from './AppSet.js';
-import TrainDetailView from './TrainDetail.js';
+import TrainDetailView from './trainDetail.js';
 import CommendReadView from './CommendRead.js';
 import MapView from './MapView.js';
 import BoundView from './BoundScroll';
