@@ -97,7 +97,8 @@ class AMapView extends React.Component {
 
   render() {
     return (
-      <RCTAMapView ref="mapview"
+      <RCTAMapView 
+        ref="mapview"
         {...this.props}
         onRegionChange={e => this._onRegionChange(e)}
         onMove={e => this._onMove(e)}
