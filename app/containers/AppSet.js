@@ -5,17 +5,11 @@ import {
     Text,
     View,
     Platform,
-    UIManager,
-    LayoutAnimation,
-    Animated,
     Dimensions,
     Image,
-    Easing,
     BackAndroid,
     Alert,
-    Modal,
     TouchableOpacity,
-    ScrollView,
 } from 'react-native';
 import {
     isFirstTime,

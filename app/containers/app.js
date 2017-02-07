@@ -1,17 +1,7 @@
 import React from 'react';
 import {
-    AppRegistry,
-    StyleSheet,
-    Text,
     View,
-    Platform,
-    UIManager,
-    TouchableOpacity,
-    LayoutAnimation,
-    Animated,
     Dimensions,
-    Image,
-    Easing,
     Navigator,
     StatusBar,
 } from 'react-native';
@@ -143,48 +133,5 @@ class App extends React.Component {
         }
     }
 }
-
-const styles = StyleSheet.create({
-    splash_text: {
-        marginBottom: 140,
-        fontSize: 37,
-        color: '#FFFFFF',
-        fontWeight: 'bold'
-    },
-    gress: {
-        backgroundColor: '#A3D900',
-        position: 'absolute',
-        width: Dimensions.get('window').width,
-        height: 200
-    },
-    doges: {
-        position: 'absolute'
-    },
-    content: {
-        backgroundColor: '#4E76A9'
-    },
-    button: {
-        backgroundColor: '#222222',
-    },
-    buttonText: {
-        color: '#555555',
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        backgroundColor: '#808080',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-});
 
 export default App;

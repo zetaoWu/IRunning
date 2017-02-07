@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import TimerMixin from 'react-timer-mixin';
 import {
     StyleSheet,
-    WebView,
     View,
     Text,
     ListView,

@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     Platform,
-    UIManager,
-    TouchableOpacity,
-    LayoutAnimation,
-    Animated,
     Dimensions,
     Image,
-    Easing,
     BackAndroid,
     TouchableWithoutFeedback,
     TextInput,

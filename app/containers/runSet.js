@@ -3,15 +3,9 @@ import {
     StyleSheet,
     Text,
     View,
-    Platform,
-    UIManager,
-    TouchableOpacity,
-    LayoutAnimation,
-    Animated,
     Dimensions,
     Image,
     StatusBar,
-    Easing,
     ListView,
     ToastAndroid,
     Switch,
@@ -198,7 +192,6 @@ export default class runSet extends Component {
                 <ListView
                     style={styles.listview}
                     enableEmptySections={true}
-                    style={styles.set_listview}
                     dataSource={this.state.dataSource.cloneWithRows(this.state.data)}
                     renderRow={(rowData, sectionID, rowID) => this._renderSetRow(rowData, sectionID, rowID)}
                     showsVerticalScrollIndicator={false}>
@@ -243,9 +236,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderWidth: 2,
         borderColor: '#FF1492',
-    },
-    set_listview: {
-
     },
     icon_left: {
         width: 25,

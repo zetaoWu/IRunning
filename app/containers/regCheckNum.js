@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, NativeModules, StyleSheet, AsyncStorage, View, Text, InteractionManager, TextInput, BackAndroid, ToastAndroid, Platform, TouchableHighlight, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet, View, Text, InteractionManager, TextInput, BackAndroid, ToastAndroid, Platform, TouchableHighlight, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
 var TimerMixin = require('react-timer-mixin');

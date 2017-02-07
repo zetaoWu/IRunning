@@ -1,4 +1,3 @@
-'use strict'
 
 import React, { Component } from 'react';
 import {
@@ -10,6 +9,11 @@ import {
     Image,
     RefreshControl,
 } from 'react-native';
+
+import { connect } from 'react-redux';
+
+const moreText = "加载完毕";
+const moreLoading = "加载中";
 
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
@@ -28,7 +32,7 @@ var imgs = [
 
 var i = 0;
 var title = [
-    '健身健身健身健身健身健身健身健身健身健身健身健身健身健身1',
+    '数据数据数据数据数据数据数据数据数据数据数据数据数据数据数据',
     '健身2',
     '健身3',
     '健身4',
@@ -39,20 +43,19 @@ var title = [
     '健身9',
 ];
 
-export default class featurePage extends Component {
+class featurePage extends Component {
     constructor(props) {
         super(props);
-       
+
         this.state = {
-            data:title,
+            data: title,
             isRefreshing: false,
+            foot: 0 // 控制foot， 0：隐藏foot  1：已加载完成   2 ：显示加载中  
         }
     }
 
     componentDidMount() {
-        this.setState({
 
-        });
     }
 
     _featureData(pressData) {
@@ -71,14 +74,14 @@ export default class featurePage extends Component {
                 <Text numberOfLines={2} style={styles.item_text}>{rowData}</Text>
                 <View style={styles.detail}>
                     <Image style={styles.img_detail} source={require('../../img/sound.png')} resizeMode="center" ></Image>
-                    <Text style={{marginLeft:7}}>50</Text>
-                    <Image style={[styles.img_detail,{marginLeft:10}]} source={require('../../img/chat.png')} resizeMode="center"></Image>
-                    <Text style={{marginLeft:7}}>70</Text>
+                    <Text style={{ marginLeft: 7 }}>50</Text>
+                    <Image style={[styles.img_detail, { marginLeft: 10 }]} source={require('../../img/chat.png')} resizeMode="center"></Image>
+                    <Text style={{ marginLeft: 7 }}>70</Text>
                 </View>
             </View>
         );
     }
- 
+
     _onRefresh() {
         this.setState({ isRefreshing: true });
         setTimeout(() => {
@@ -93,17 +96,54 @@ export default class featurePage extends Component {
                 '刷新3',
                 '刷新4',
             );
-            i=i+4;
-            
+            i = i + 4;
             this.setState({
                 isRefreshing: false,
                 data: this._featureData(title),
             });
         }, 3000);
     }
-    render() {
 
-       var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
+    _listReachEnd() {
+        let self = this;
+        //ListView滚动到底部，根据是否正在加载更多 是否正在刷新 是否已加载全部来判断是否执行加载更多
+        this.setState({
+            foot: 2,
+        });
+        this._reqDate();
+    }
+
+    _reqDate() {
+        this.timer = setTimeout(() => {
+            this.setState({
+                foot: 1,
+            });
+        }, 2000);
+    }
+
+    _renderFooter() {
+        if (this.state.foot === 1) {//数据加载完毕
+            return (
+                <View style={{ height: 40, width: widthSrc, alignItems: 'center', justifyContent: 'flex-start' }}>
+                    <Text style={{ color: '#000', fontSize: 14, marginTop: 10 }}>
+                        加载完毕
+                    </Text>
+                </View>
+            );
+        } else if (this.state.foot === 2) {//加载中
+            return (
+                <View style={{ height: 40, width: widthSrc, alignItems: 'center', justifyContent: 'flex-start' }}>
+                    <Text style={{ color: '#000', fontSize: 14, marginTop: 10 }}>
+                        加载中...
+                    </Text>
+                </View>
+            );
+
+        }
+    }
+
+    render() {
+        var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 });
 
         var that = this;
         this.state.data;
@@ -113,6 +153,9 @@ export default class featurePage extends Component {
                     contentContainerStyle={styles.list}
                     enableEmptySections={true}
                     pageSize={2}
+                    onEndReached={this._listReachEnd.bind(this)}
+                    onEndReachedThreshold={10}
+                    renderFooter={this._renderFooter.bind(this)}
                     scrollRenderAheadDistance={500}
                     dataSource={ds.cloneWithRows(this.state.data)}
                     renderRow={(rowData, sectionID, rowID) => that._renderItem(rowData, rowID)}
@@ -132,7 +175,26 @@ export default class featurePage extends Component {
             </View>
         );
     };
+
+    componentWillUnmount() {
+        this.timer && clearTimeout(this.timer);
+    }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isLoadingMore: state.reducer.isLoadingMore,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // addButtonClick() {ƒ
+        //     dispatch(add(this.number))
+        // }
+    }
+}
+
 const styles = StyleSheet.create({
     list: {
         flexDirection: 'row',
@@ -163,25 +225,28 @@ const styles = StyleSheet.create({
     },
     item_text: {
         width: widthSrc / 2 - 15,
-        height:37,
+        height: 37,
         marginTop: 4,
         marginLeft: 5,
         marginRight: 5,
-        justifyContent:'flex-start',
+        justifyContent: 'flex-start',
     },
-    detail:{
-        width:widthSrc / 2 - 10,
-        height:25,
-        flexDirection:'row',
-        alignItems:'flex-end',
-        justifyContent:'flex-start'
+    detail: {
+        width: widthSrc / 2 - 10,
+        height: 25,
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-start'
     },
-    img_detail:{
-        width:17,
-        height:17,
-        marginLeft:3
+    img_detail: {
+        width: 17,
+        height: 17,
+        marginLeft: 3
     }
 });
+
+export default connect(mapStateToProps, mapDispatchToProps)(featurePage);
+
 
 // 2016-12-26T08:09:46.506549Z 1 [Note] A temporary password is generated for root@localhost: Ft9l!aM:&NqU
 // If you lose this password, please consult the section How to Reset the Root Password in the MySQL reference manual.

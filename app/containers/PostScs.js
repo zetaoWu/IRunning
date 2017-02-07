@@ -6,17 +6,9 @@ import {
     View,
     Dimensions,
     Image,
-    ListView,
-    ScrollView,
     TouchableOpacity,
-    ToastAndroid,
-    TouchableWithoutFeedback,
-    StatusBar,
-    Platform,
-    BackAndroid,
     Animated,
     Easing,
-    InteractionManager,
 } from 'react-native';
 
 var widthSrc = Dimensions.get('window').width;

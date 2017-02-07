@@ -1,20 +1,14 @@
 'use strict'
 import React, { Component } from 'react';
 import {
-    StyleSheet,
     Text,
     View,
     Dimensions,
     Image,
-    ListView,
     ScrollView,
     TouchableOpacity,
-    ToastAndroid,
-    TouchableWithoutFeedback,
-    StatusBar,
     Platform,
     BackAndroid,
-    Linking,
 } from 'react-native';
 
 var widthSrc = Dimensions.get('window').width;

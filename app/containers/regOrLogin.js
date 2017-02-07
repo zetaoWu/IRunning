@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
     Platform,
-    UIManager,
     TouchableOpacity,
-    Animated,
     Dimensions,
     Image,
-    Easing,
     BackAndroid,
-    TextInput,
     StatusBar,
 } from 'react-native';
 var widthSrc = Dimensions.get('window').width;

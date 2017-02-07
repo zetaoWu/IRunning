@@ -3,17 +3,8 @@ import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
-    Animated,
     Dimensions,
-    Image,
-    BackAndroid,
-    StatusBar,
-    Easing,
-    TouchableWithoutFeedback,
     PermissionsAndroid,
-    DeviceEventEmitter,
-    TouchableHighlight,
 } from 'react-native';
 
 import AMapLocation from './AmapLocation';

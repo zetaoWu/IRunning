@@ -4,7 +4,6 @@ import {
     Text,
     View,
     BackAndroid,
-    ToastAndroid,
     Dimensions,
     Image,
     StatusBar,

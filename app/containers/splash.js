@@ -1,22 +1,12 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
     View,
     Platform,
-    UIManager,
-    TouchableOpacity,
-    LayoutAnimation,
-    Animated,
     AsyncStorage,
     Dimensions,
     Image,
-    Easing,
-    ToastAndroid,
-    Alert,
     BackAndroid,
-    StatusBar,
 } from 'react-native';
 
 var widthSrc = Dimensions.get('window').width;
@@ -62,7 +52,7 @@ export default class splash extends Component {
 
     _goNextScene(nextRoute, result, id) {
         // this.st.navigator.resetTo(nextRoute);
-            this.props.navigator.push({
+            this.props.navigator.resetTo({
                 title: nextRoute + '',
                 id: id + '',
                 name: nextRoute + '',

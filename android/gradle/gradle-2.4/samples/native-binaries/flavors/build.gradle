@@ -1,0 +1,30 @@
+apply plugin: 'cpp'
+
+model {
+    flavors {
+        english
+        french
+    }
+    components {
+        hello(NativeLibrarySpec) {
+            binaries.all {
+                if (flavor == flavors.french) {
+                    cppCompiler.define "FRENCH"
+                }
+            }
+        }
+    }
+}
+binaries.withType(SharedLibraryBinarySpec) {
+    cppCompiler.define "DLL_EXPORT"
+}
+
+model {
+    components {
+        main(NativeExecutableSpec) {
+            binaries.all {
+                lib library: 'hello'
+            }
+        }
+    }
+}

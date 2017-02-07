@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, Text, Image, View, TouchableOpacity, Animated, Easing,BackAndroid,Platform,
+    StyleSheet, Image, View, TouchableOpacity, Animated,BackAndroid,Platform,
 } from 'react-native';
 
 var dimensions = require('Dimensions');

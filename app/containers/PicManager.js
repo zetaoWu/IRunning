@@ -6,16 +6,8 @@ import {
     View,
     Dimensions,
     Image,
-    ListView,
-    ScrollView,
-    TouchableOpacity,
-    ToastAndroid,
-    TouchableWithoutFeedback,
-    StatusBar,
     Platform,
     BackAndroid,
-    PanResponder,
-    Linking,
 } from 'react-native';
 import ImageZoom from 'react-native-image-pan-zoom';
 var widthSrc = Dimensions.get('window').width;

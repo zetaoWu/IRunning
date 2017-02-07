@@ -4,14 +4,10 @@ import {
     Text,
     View,
     Platform,
-    TouchableOpacity,
-    LayoutAnimation,
-    Animated,
     Dimensions,
     Image,
     BackAndroid,
     StatusBar,
-    Easing,
     TouchableWithoutFeedback,
 } from 'react-native';
 
