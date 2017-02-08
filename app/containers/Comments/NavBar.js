@@ -90,7 +90,7 @@ export default class NavbarComp extends Component {
     _rightButton() {
         switch (this.props.route.id) {
             case 'trainHis':
-                return (<Image style={styles.icon_right} resizeMode='contain' source={require('../img/shared.png')}></Image>);
+                return (<Image style={styles.icon_right} resizeMode='contain' source={require('../../img/shared.png')}></Image>);
             case 'index':
                 return _renderBarButton('uniE601', () => {
                     this.props.navigator.push({

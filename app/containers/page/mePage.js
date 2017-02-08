@@ -134,19 +134,19 @@ export default class mePage extends Component {
     }
 
     _toUserInfo() {
-        const {navigator} = this.props;
-        if (navigator) {
-            navigator.push({
-                name: 'UserInfo',
-                id:'UserInfo',
-                title:'客户详情',
-            });
-        }
+        this.props.navigator.push({
+            name: 'UserInfo',
+            id: 'UserInfo',
+            title: '客户详情',
+            params: {
+                avatarSource: this.state.avatarSource,
+            }
+        });
     }
 
-    _onJumpSet(){
+    _onJumpSet() {
         this.props.navigator.push({
-            id:'appSet',
+            id: 'appSet',
         });
     }
 
@@ -157,8 +157,8 @@ export default class mePage extends Component {
                     animationType={"fade"}
                     transparent={true}
                     visible={this.state.modalVisible}
-                    onRequestClose={(a) => { this._onShared(false) } }
-                    >
+                    onRequestClose={(a) => { this._onShared(false) }}
+                >
                     <View style={styles.innerContainer} >
                         <View style={{ width: widthSrc - 40, height: 80, backgroundColor: '#FFFFFF', borderRadius: 5, alignItems: 'center', justifyContent: 'space-around' }}>
                             <TouchableOpacity onPress={() => this._openCamera()}>
@@ -179,7 +179,7 @@ export default class mePage extends Component {
                         <TouchableOpacity>
                             <Image style={{ width: 23, height: 23 }} source={require('../../img/notice.png')} resizeMode='contain'></Image>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>this._onJumpSet()}>
+                        <TouchableOpacity onPress={() => this._onJumpSet()}>
                             <Image style={{ width: 20, height: 20, marginLeft: 15 }} source={require('../../img/set.png')} resizeMode='contain'></Image>
                         </TouchableOpacity>
                     </View>

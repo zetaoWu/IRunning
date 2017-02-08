@@ -24,6 +24,7 @@ export default class UserInfo extends Component {
         if (Platform.OS === 'android') {
             BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
         }
+     
     }
 
     componentWillUnmount() {
@@ -73,7 +74,7 @@ export default class UserInfo extends Component {
             id:'picManager',
         });
     }
-
+// ../img/backicon.png
     render() {
         return (
             <View style={{ backgroundColor: '#FFFFFF', marginTop: 18, height: heightSrc, width: widthSrc }}>
@@ -82,11 +83,14 @@ export default class UserInfo extends Component {
                         <Image style={{ width: 20, height: 20, marginLeft: 15,marginTop:10}} source={require('../img/backicon.png')} resizeMode='cover'></Image>
                     </TouchableOpacity>
                 </View>
-
                 <ScrollView>
                     <View style={{ flex: 1, backgroundColor: '#453d4b', height: 240, justifyContent: 'center', alignItems: 'center' }}>
                         <TouchableOpacity onPress={()=>this._picManage()}>
-                            <Image style={{ width: 80, height: 80, borderRadius: 80, marginTop: 20 }} source={require('../img/head.png')} resizeMode='cover'></Image>
+                        {
+                            this.props.avatarSource==null?
+                            <Image style={{ width: 80, height: 80, borderRadius: 80, marginTop: 20 }} source={require('../img/backicon.png')} resizeMode='cover'></Image>
+                            :<Image style={{ width: 80, height: 80, borderRadius: 80, marginTop: 20 }} source={{uri:this.props.avatarSource}} resizeMode='cover'></Image>
+                        }
                         </TouchableOpacity>
                         <Text style={{ color: '#FFFFFF', fontSize: 15, marginTop: 10 }}>NICKNAME</Text>
                         <Text style={{ color: '#D3D3D3', fontSize: 11, marginTop: 10 }}>上海,浦东新区</Text>

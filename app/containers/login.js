@@ -52,16 +52,13 @@ export default class login extends Component {
                     toastShort('账号密码不正确');
                 } else {
                     toastShort('账号密码正确 登录中');
-                    const {navigator} = this.props;
-                    if (navigator) {
-                        navigator.push({
+                    this.props.navigator.push({
                             name: 'main',
                             id: 'main',
                             params: {
                                 username: this.state.username,
                             }
                         });
-                    }
                 }
             });
     }
