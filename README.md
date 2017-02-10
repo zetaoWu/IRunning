@@ -2,7 +2,7 @@
 React native开发的一款运动软件  练手中 </br>
 </br>
 下载地址 </br>
-![下载地址](https://github.com/zetaoWu/IRunning/blob/master/display/F84B3644C4872827C2535DD511B5E057.jpg)</br>
+![下载地址](https://github.com/zetaoWu/IRunning/blob/master/display/F84B3644C4872827C2535DD511B5E057.png)</br>
 </br>
 首页展示 </br>
 ![首页展示](https://github.com/zetaoWu/IRunning/blob/master/display/3E76B868B4B284621BC8E3B9C53D36F8.jpg)</br>
