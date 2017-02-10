@@ -1,7 +1,7 @@
 # IRunning 依照keep风格 仅限个人开发,严禁用于商业用途。
 React native开发的一款运动软件  练手中 </br>
 </br>
-下载地址 </br>
+Android下载地址 </br>
 ![下载地址](https://github.com/zetaoWu/IRunning/blob/master/display/F84B3644C4872827C2535DD511B5E057.png)</br>
 </br>
 首页展示 </br>
