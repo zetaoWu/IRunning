@@ -26,6 +26,7 @@ import TrainDetailView from './trainDetail.js';
 import CommendReadView from './CommendRead.js';
 import MapView from './MapView.js';
 import BoundView from './BoundScroll';
+import RecomTrain from './RecomTrain';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -116,6 +117,10 @@ class App extends React.Component {
                 return (<MapView {...route.params} navigator={navigator} />);
             case 'boundView':
                 return (<BoundView {...route.params} navigator={navigator} />);
+            case 'recomTrain':
+                return (
+                    <RecomTrain {...route.params} navigator={navigator}/>
+                );
             default:
                 break
         }

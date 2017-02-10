@@ -12,7 +12,7 @@ import {
     TouchableHighlight,
     StatusBar,
 } from 'react-native';
-
+import { toastShort } from '../../utils/ToastUtil';
 var url = require('../../url');
 var config = require('../../config');
 import RunComponent from '../run';
@@ -22,6 +22,7 @@ import NavbarComp from '../Comments/NavBar.js';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
 var data = ['row1', 'row2', 'row3', 'row4', 'row5', 'row13', 'row2421'];
+
 var imgs = [
     require('../../img/icon1.jpg'),
     require('../../img/icon3.jpg'),
@@ -178,7 +179,14 @@ export default class homePage extends Component {
         }
     }
 
- 
+    _pressRecomTrain(rowData) {
+       console.log(rowData);
+
+        this.props.navigator.push({
+            id: 'recomTrain',
+            params: { data: rowData }
+        });
+    }
 
     _pressRow(rowData) {
         this.props.navigator.push({
@@ -222,20 +230,20 @@ export default class homePage extends Component {
         );
     }
 
-       _renItemRecomTrain(rowData, rowID) {
+    _renItemRecomTrain(rowData, rowID) {
         return (
-            <TouchableHighlight>
-            <Image style={{ width: 260, height: 140, marginTop: 2, justifyContent: 'space-between', marginRight: 7 }} resizeMode='cover' source={{ uri: rowData.platImg }}>
-                <View >
-                    <Text style={{ color: '#FFFFFF', fontSize: 18, marginLeft: 15, marginTop: 15 }}>{rowData.name}</Text>
-                    <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 18, marginTop: 2 }}>{rowData.joinNum}已参加</Text>
-                </View>
-                <View></View>
-                <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
-                    <Image style={styles.splash_icon} resizeMode='contain' source={require('../../img/ic_launcher.png')}></Image>
-                    <Text style={{ color: '#FFFFFF', fontSize: 11, marginLeft: 3 }}>{rowData.time}分钟</Text>
-                </View>
-            </Image>
+            <TouchableHighlight onPress={() => this._pressRecomTrain(rowData)}>
+                <Image style={{ width: 260, height: 140, marginTop: 2, justifyContent: 'space-between', marginRight: 7 }} resizeMode='cover' source={{ uri: rowData.platImg }}>
+                    <View >
+                        <Text style={{ color: '#FFFFFF', fontSize: 18, marginLeft: 15, marginTop: 15 }}>{rowData.name}</Text>
+                        <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 18, marginTop: 2 }}>{rowData.joinNum}已参加</Text>
+                    </View>
+                    <View></View>
+                    <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
+                        <Image style={styles.splash_icon} resizeMode='contain' source={require('../../img/ic_launcher.png')}></Image>
+                        <Text style={{ color: '#FFFFFF', fontSize: 11, marginLeft: 3 }}>{rowData.time}分钟</Text>
+                    </View>
+                </Image>
             </TouchableHighlight>
         );
     }
@@ -250,7 +258,6 @@ export default class homePage extends Component {
 
     _renderComReadHead() {
         return (
-
             <View style={{ height: 40, width: widthSrc - 20, marginLeft: 10, marginRight: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Text>推荐阅读</Text>
                 <Text></Text>
@@ -264,7 +271,7 @@ export default class homePage extends Component {
         return (<View style={{ height: 40, width: widthSrc - 20, marginLeft: 10, marginRight: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Text>我的训练</Text>
             <Text></Text>
-            <Text onPress={() => { } }>+添加训练</Text>
+            <Text onPress={() => { }}>+添加训练</Text>
         </View>);
     }
 
@@ -385,16 +392,16 @@ export default class homePage extends Component {
 
                     </View>
                     <TouchableHighlight>
-                    <View >
-                        <View style={{ height: 30, justifyContent: 'center' }}>
-                            <Text style={{ width: widthSrc, marginLeft: 10 }}>课程表</Text>
+                        <View >
+                            <View style={{ height: 30, justifyContent: 'center' }}>
+                                <Text style={{ width: widthSrc, marginLeft: 10 }}>课程表</Text>
+                            </View>
+                            <Image style={{ width: widthSrc, height: 200, alignItems: 'center', justifyContent: 'center' }} resizeMode='stretch' source={{ uri: this.state.schedule }}>
+                                <Text style={{ fontSize: 25, color: '#FFFFFF', fontWeight: '300' }}>定制课程表</Text>
+                                <Text style={{ marginTop: 7, fontSize: 14, color: '#FFFFFF' }}>量身定制1-4周训练安排</Text>
+                                <Text style={{ fontSize: 14, color: '#FFFFFF' }}>达成理想身材</Text>
+                            </Image>
                         </View>
-                        <Image style={{ width: widthSrc, height: 200, alignItems: 'center', justifyContent: 'center' }} resizeMode='stretch' source={{ uri: this.state.schedule }}>
-                            <Text style={{ fontSize: 25, color: '#FFFFFF', fontWeight: '300' }}>定制课程表</Text>
-                            <Text style={{ marginTop: 7, fontSize: 14, color: '#FFFFFF' }}>量身定制1-4周训练安排</Text>
-                            <Text style={{ fontSize: 14, color: '#FFFFFF' }}>达成理想身材</Text>
-                        </Image>
-                    </View>
                     </TouchableHighlight>
                 </ScrollView>
             </View>

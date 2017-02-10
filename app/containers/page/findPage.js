@@ -128,7 +128,7 @@ export default class findPage extends Component {
                         tabBarUnderlineStyle={{ borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}
                         tabBarActiveTextColor='#FFF'
                         tabBarInactiveTextColor='#a1a1a1'
-                        tabBarTextStyle={{ fontFamily: 'Roboto', marginTop: 7, fontSize: 14 }}>
+                        tabBarTextStyle={{ marginTop: 7, fontSize: 14 }}>
                         <FeaturePage tabLabel="精选" />
                         <TrainPage tabLabel="训练" />
                         <DietPage tabLabel="饮食" />

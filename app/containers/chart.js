@@ -14,8 +14,6 @@ import {
 } from 'react-native';
 var {Surface, Group, Shape, Path} = ART;
 
-
-
 export default class chart extends Component {
 
     componentDidMount(){

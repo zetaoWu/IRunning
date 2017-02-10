@@ -117,6 +117,7 @@ export default class trainHis extends Component {
             </TouchableHighlight>
         );
     }
+    
     _selectHisShow() {
         this.setState({ modalVisible: false });
     }
@@ -174,7 +175,7 @@ export default class trainHis extends Component {
                     tabBarUnderlineStyle={{ borderColor: '#FFFFFF', backgroundColor: '#453d4b' }}
                     tabBarActiveTextColor='#5c6166'
                     tabBarInactiveTextColor='#676B70'
-                    tabBarTextStyle={{ fontFamily: 'Roboto', marginTop: 7, fontSize: 15 }}>
+                    tabBarTextStyle={{  marginTop: 7, fontSize: 15 }}>
                     <DayPage tabLabel="日" />
                     <WeekPage tabLabel="周" />
                     <MonthPage tabLabel="月" />

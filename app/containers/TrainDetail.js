@@ -78,18 +78,21 @@ export default class trainDetail extends Component {
                 <ScrollView
                     onScroll={(event) => { this.setState({ scrollOffset: event.nativeEvent.contentOffset.y }); } }
                     scrollEventThrottle={15}>
-                    <Image style={{ width: widthSrc, height: 180 }} resizeMode='stretch' source={{ uri: this.props.data.trainID.platImg }}>
-                        <Text style={{ fontSize: 30, color: '#FFFFFF', marginLeft: 15, marginTop: 72 }}>{this.props.data.trainID.name}</Text>
 
+                    <Image style={{ width: widthSrc, height: 180 }} resizeMode='stretch' source={{ uri: this.props.data.trainID.platImg }}>
+                        <View style={styles.imageback}>
+                        <Text style={{ fontSize: 30, color: '#FFFFFF', marginLeft: 15, marginTop: 72 }}>{this.props.data.trainID.name}</Text>
+                            </View>
                         <View style={{ flexDirection: 'row', marginTop: 18, marginLeft: 16 }}>
                             <View></View>
-                            <Text style={{ fontSize: 12, color: '#FFFFFF' }}>训练说明</Text>
-                            <View>
+                            <View style={styles.imageback}>
+                                <Text style={{ fontSize: 12, color: '#FFFFFF'}}>训练说明</Text>
+                            </View>
+                            <View style={styles.imageback}>
                                 <Text style={{ fontSize: 12, color: '#FFFFFF', marginLeft: 15 }}>音乐设置</Text>
                             </View>
                         </View>
                     </Image>
-
                     <Text style={{ fontSize: 30, height: 200 }}>数据数据</Text>
                     <Text style={{ fontSize: 30, height: 200 }}>数据数据</Text>
                     <Text style={{ fontSize: 30, height: 200 }}>数据数据</Text>
@@ -114,6 +117,9 @@ export default class trainDetail extends Component {
 }
 
 const styles = StyleSheet.create({
+    imageback:{
+        backgroundColor: 'rgba(0,0,0,0)',
+    },
     main_top: {
         paddingLeft: 10,
         paddingRight: 10,

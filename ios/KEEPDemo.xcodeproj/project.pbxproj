@@ -23,6 +23,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		1846BAC61E4D9DBC00C27ECD /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1846BAC51E4D997100C27ECD /* libART.a */; };
 		1887635D1E2CC754008C098C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1887635C1E2CC754008C098C /* libz.tbd */; };
 		188763731E2CC762008C098C /* libbz2.1.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 188763721E2CC762008C098C /* libbz2.1.0.tbd */; };
 		3CD9099984574EB0ACB4526E /* libRCTHotUpdate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9218FD43D82E4D809B00F0DF /* libRCTHotUpdate.a */; };
@@ -93,6 +94,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
+		};
+		1846BAA31E4D98A700C27ECD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1846BA9F1E4D98A600C27ECD /* ART.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = ART;
+		};
+		1846BAC41E4D997100C27ECD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1846BAC01E4D997100C27ECD /* ART.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = ART;
 		};
 		4031E7201E08D2BB006E120D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -199,6 +214,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = KEEPDemo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = KEEPDemo/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		1846BA9F1E4D98A600C27ECD /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
+		1846BAC01E4D997100C27ECD /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		1887635C1E2CC754008C098C /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		188763721E2CC762008C098C /* libbz2.1.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.1.0.tbd; path = usr/lib/libbz2.1.0.tbd; sourceTree = SDKROOT; };
 		1F47EE37319C497CB1F9D171 /* RCTHotUpdate.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTHotUpdate.xcodeproj; path = "../node_modules/react-native-update/ios/RCTHotUpdate.xcodeproj"; sourceTree = "<group>"; };
@@ -224,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1846BAC61E4D9DBC00C27ECD /* libART.a in Frameworks */,
 				188763731E2CC762008C098C /* libbz2.1.0.tbd in Frameworks */,
 				1887635D1E2CC754008C098C /* libz.tbd in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -344,9 +362,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1846BAA01E4D98A600C27ECD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1846BAA41E4D98A700C27ECD /* libART.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1846BAC11E4D997100C27ECD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1846BAC51E4D997100C27ECD /* libART.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		1887635B1E2CC753008C098C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1846BA9F1E4D98A600C27ECD /* ART.xcodeproj */,
 				188763721E2CC762008C098C /* libbz2.1.0.tbd */,
 				1887635C1E2CC754008C098C /* libz.tbd */,
 			);
@@ -389,6 +424,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				1846BAC01E4D997100C27ECD /* ART.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
 				00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */,
@@ -503,6 +539,14 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 1846BAC11E4D997100C27ECD /* Products */;
+					ProjectRef = 1846BAC01E4D997100C27ECD /* ART.xcodeproj */;
+				},
+				{
+					ProductGroup = 1846BAA01E4D98A600C27ECD /* Products */;
+					ProjectRef = 1846BA9F1E4D98A600C27ECD /* ART.xcodeproj */;
+				},
 				{
 					ProductGroup = 4031E71B1E08D2BA006E120D /* Products */;
 					ProjectRef = 732C1634BD1B4AFAA3E4BE0A /* ImageCropPicker.xcodeproj */;
@@ -619,6 +663,20 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1846BAA41E4D98A700C27ECD /* libART.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libART.a;
+			remoteRef = 1846BAA31E4D98A700C27ECD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1846BAC51E4D997100C27ECD /* libART.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libART.a;
+			remoteRef = 1846BAC41E4D997100C27ECD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		4031E7211E08D2BB006E120D /* libimageCropPicker.a */ = {

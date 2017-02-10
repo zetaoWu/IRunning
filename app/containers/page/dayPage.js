@@ -100,7 +100,7 @@ export default class dayPage extends Component {
                     <View style={{ height: 100, marginTop: 20 }}>
                         <ListView
                             ref="_listview"
-                            onScroll={(e)=>{toastShort(e.nativeEvent.contentOffset.x)}}
+                            onScroll={(e)=>{}}
                             enableEmptySections={true}
                             showsHorizontalScrollIndicator={false}
                             style={{ height: 100, width: widthSrc }}
