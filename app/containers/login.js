@@ -83,7 +83,7 @@ export default class login extends Component {
                     />
                 <View style={[styles.main_top, { marginTop: 20 }]}>
                     <TouchableWithoutFeedback onPress={() => this._onBackFunction()}>
-                        <Image style={styles.icon_left} resizeMode='contain' source={require('image!back_icon')}></Image>
+                        <Image style={styles.icon_left} resizeMode='contain' source={require('../img/back_icon.png')}></Image>
                     </TouchableWithoutFeedback>
                     <Text style={styles.reg}>登录</Text>
                     <View style={styles.icon_image}></View>
@@ -91,7 +91,7 @@ export default class login extends Component {
                 <View style={styles.line}></View>
 
                 <View style={styles.num}>
-                    <Image style={{ width: 20, height: 20, marginLeft: 5 }} resizeMode='contain' source={require('image!icon_phone')}></Image>
+                    <Image style={{ width: 20, height: 20, marginLeft: 5 }} resizeMode='contain' source={require('../img/icon_phone.png')}></Image>
                     <Text style={{ color: '#bbbbbb' }}>+86</Text>
                     <View style={{ marginTop: 3, marginBottom: 3, backgroundColor: '#bbbbbb', width: 0.5, height: 20, marginLeft: 3 }}></View>
                     <TextInput style={{ marginLeft: 5, height: 30, paddingTop: 1, paddingBottom: 1, borderColor: '#453d4b', width: Dimensions.get('window').width - 100, borderWidth: 1, color: '#FFFFFF' }}
@@ -112,7 +112,7 @@ export default class login extends Component {
                 </View>
 
                 <View style={styles.num}>
-                    <Image style={{ width: 20, height: 20, marginLeft: 5 }} resizeMode='contain' source={require('image!icon_pwd')}></Image>
+                    <Image style={{ width: 20, height: 20, marginLeft: 5 }} resizeMode='contain' source={require('../img/icon_pwd.png')}></Image>
                     <View style={{ marginTop: 3, marginBottom: 3, backgroundColor: '#bbbbbb', width: 0.5, height: 20, marginLeft: 3 }}></View>
                     <TextInput style={{ marginLeft: 5, height: 30, paddingTop: 1, paddingBottom: 1, borderColor: '#453d4b', width: Dimensions.get('window').width - 100, borderWidth: 1, color: '#FFFFFF' }}
                         placeholder='密码'
@@ -149,9 +149,9 @@ export default class login extends Component {
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', height: 70, width: Dimensions.get('window').width - 50 }}>
-                    <Image style={{ width: 40, height: 40 }} source={require('image!weixinshare')} resizeMode='contain'></Image>
-                    <Image style={{ width: 40, height: 40 }} source={require('image!qqshare')} resizeMode='contain'></Image>
-                    <Image style={{ width: 40, height: 40 }} source={require('image!sinashare')} resizeMode='contain'></Image>
+                    <Image style={{ width: 40, height: 40 }} source={require('../img/weixinshare.png')} resizeMode='contain'></Image>
+                    <Image style={{ width: 40, height: 40 }} source={require('../img/qqshare.png')} resizeMode='contain'></Image>
+                    <Image style={{ width: 40, height: 40 }} source={require('../img/sinashare.png')} resizeMode='contain'></Image>
                 </View>
             </View>)
     };

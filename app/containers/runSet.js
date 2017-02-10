@@ -102,7 +102,7 @@ export default class runSet extends Component {
                     <Text></Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', paddingRight: 5 }}>
                         <Text style={{ fontSize: 13 }}>不设置目标, 自由排布</Text>
-                        <Image style={{ width: 20, height: 20 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                        <Image style={{ width: 20, height: 20 }} resizeMode='contain' source={require('../img/jumpto.png')}  ></Image>
                     </View>
                 </View>);
         }
@@ -123,7 +123,7 @@ export default class runSet extends Component {
                 <View style={styles.first_set}>
                     <Text style={{ marginLeft: 10 }}>动作预览</Text>
                     <Text></Text>
-                    <Image style={{ width: 20, height: 20 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                    <Image style={{ width: 20, height: 20 }} resizeMode='contain' source={require('../img/jumpto.png')}  ></Image>
                 </View>);
         }
 
@@ -150,7 +150,7 @@ export default class runSet extends Component {
                 <View style={styles.first_set}>
                     <Text style={{ marginLeft: 10 }}>动作预览</Text>
                     <Text></Text>
-                    <Image style={{ width: 20, height: 20 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                    <Image style={{ width: 20, height: 20 }} resizeMode='contain' source={require('../img/jumpto.png')}  ></Image>
                 </View>);
         }
 
@@ -166,7 +166,7 @@ export default class runSet extends Component {
                 <View style={styles.first_set}>
                     <Text style={{ marginLeft: 10 }}>离线地图</Text>
                     <Text></Text>
-                    <Image style={{ width: 20, height: 20 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                    <Image style={{ width: 20, height: 20 }} resizeMode='contain' source={require('../img/jumpto.png')}  ></Image>
                 </View>);
         }
     }
@@ -184,7 +184,7 @@ export default class runSet extends Component {
 
                 <View style={styles.top_view}>
                     <TouchableWithoutFeedback onPress={this._backFunction.bind(this)}>
-                        <Image style={styles.icon_left} resizeMode='contain' source={require('image!back_icon')}></Image>
+                        <Image style={styles.icon_left} resizeMode='contain' source={require('../img/back_icon.png')}></Image>
                     </TouchableWithoutFeedback>
                     <Text style={styles.top_title}>跑步设置</Text>
                     <Text style={styles.top_title}>&nbsp; &nbsp; &nbsp; &nbsp; </Text>

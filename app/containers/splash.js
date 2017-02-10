@@ -74,11 +74,11 @@ export default class splash extends Component {
             <View style={{ width: widthSrc, height: heightSrc }}>
 
                 <View style={styles.container}>
-                    {/* <Image style={styles.splash_image} source={require('image!b')}></Image> */}
+                    {/* <Image style={styles.splash_image} source={require('../img/b')}></Image> */}
                     {/* <Text style={styles.splash_text}>Keep</Text> */}
                     <View style={styles.icon_bottom}>
-                        <Image style={styles.splash_icon} resizeMode='contain' source={require('image!ic_launcher')}></Image>
-                        <Image style={styles.splash_text} resizeMode='contain' source={require('image!keep5')}></Image>
+                        <Image style={styles.splash_icon} resizeMode='contain' source={require('../img/ic_launcher.png')}></Image>
+                        <Image style={styles.splash_text} resizeMode='contain' source={require('../img/keep5.png')}></Image>
                     </View>
                 </View>
             </View>

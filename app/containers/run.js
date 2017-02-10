@@ -82,11 +82,11 @@ export default class run extends Component {
 
                 <View style={[styles.top_bar,{marginTop:20}]}>
                     <TouchableWithoutFeedback onPress={this._backFunction.bind(this)}>
-                        <Image style={styles.icon_left} resizeMode='contain' source={require('image!back_icon')}></Image>
+                        <Image style={styles.icon_left} resizeMode='contain' source={require('../img/back_icon.png')}></Image>
                     </TouchableWithoutFeedback>
                     <Text style={styles.top_title}>户外跑步</Text>
                     <TouchableWithoutFeedback onPress={this._setFunction.bind(this)}>
-                        <Image style={styles.icon_right} resizeMode='contain' source={require('image!more_icon')}></Image>
+                        <Image style={styles.icon_right} resizeMode='contain' source={require('../img/more_icon.png')}></Image>
                     </TouchableWithoutFeedback>
                 </View>
 
@@ -104,9 +104,9 @@ export default class run extends Component {
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 30, paddingRight: 30, marginTop: 40 }}>
-                    <Image source={require('image!back_icon')}></Image>
-                    <Image source={require('image!back_icon')}></Image>
-                    <Image source={require('image!back_icon')}></Image>
+                    <Image source={require('../img/back_icon.png')}></Image>
+                    <Image source={require('../img/back_icon.png')}></Image>
+                    <Image source={require('../img/back_icon.png')}></Image>
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 35, paddingRight: 35, marginTop: 20 }}>

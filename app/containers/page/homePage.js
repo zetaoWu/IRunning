@@ -178,21 +178,7 @@ export default class homePage extends Component {
         }
     }
 
-    _renItemRecomTrain(rowData, rowID) {
-        return (
-            <Image style={{ width: 260, height: 140, marginTop: 2, justifyContent: 'space-between', marginRight: 7 }} resizeMode='cover' source={{ uri: rowData.platImg }}>
-                <View >
-                    <Text style={{ color: '#FFFFFF', fontSize: 18, marginLeft: 15, marginTop: 15 }}>{rowData.name}</Text>
-                    <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 18, marginTop: 2 }}>{rowData.joinNum}已参加</Text>
-                </View>
-                <View></View>
-                <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
-                    <Image style={styles.splash_icon} resizeMode='contain' source={require('image!ic_launcher')}></Image>
-                    <Text style={{ color: '#FFFFFF', fontSize: 11, marginLeft: 3 }}>{rowData.time}分钟</Text>
-                </View>
-            </Image>
-        );
-    }
+ 
 
     _pressRow(rowData) {
         this.props.navigator.push({
@@ -228,10 +214,28 @@ export default class homePage extends Component {
                     <Text style={{ color: '#FFFFFF', fontSize: 20, marginLeft: 15, marginTop: 15 }}>{rowData.trainID.name}</Text>
                     <View></View>
                     <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
-                        <Image style={[styles.splash_icon, { marginLeft: 3 }]} resizeMode='contain' source={require('image!ic_launcher')}></Image>
+                        <Image style={[styles.splash_icon, { marginLeft: 3 }]} resizeMode='contain' source={require('../../img/ic_launcher.png')}></Image>
                         <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 3 }}>{rowData.trainID.time}分钟</Text>
                     </View>
                 </Image>
+            </TouchableHighlight>
+        );
+    }
+
+       _renItemRecomTrain(rowData, rowID) {
+        return (
+            <TouchableHighlight>
+            <Image style={{ width: 260, height: 140, marginTop: 2, justifyContent: 'space-between', marginRight: 7 }} resizeMode='cover' source={{ uri: rowData.platImg }}>
+                <View >
+                    <Text style={{ color: '#FFFFFF', fontSize: 18, marginLeft: 15, marginTop: 15 }}>{rowData.name}</Text>
+                    <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 18, marginTop: 2 }}>{rowData.joinNum}已参加</Text>
+                </View>
+                <View></View>
+                <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
+                    <Image style={styles.splash_icon} resizeMode='contain' source={require('../../img/ic_launcher.png')}></Image>
+                    <Text style={{ color: '#FFFFFF', fontSize: 11, marginLeft: 3 }}>{rowData.time}分钟</Text>
+                </View>
+            </Image>
             </TouchableHighlight>
         );
     }
@@ -240,7 +244,7 @@ export default class homePage extends Component {
         return (<View style={{ height: 40, width: widthSrc - 20, marginLeft: 10, marginRight: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Text>推荐训练</Text>
             <Text></Text>
-            <Image style={styles.icon_left} resizeMode='contain' source={require('image!jumpto')}></Image>
+            <Image style={styles.icon_left} resizeMode='contain' source={require('../../img/jumpto.png')}></Image>
         </View>);
     }
 
@@ -250,7 +254,7 @@ export default class homePage extends Component {
             <View style={{ height: 40, width: widthSrc - 20, marginLeft: 10, marginRight: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Text>推荐阅读</Text>
                 <Text></Text>
-                <Image style={styles.icon_left} resizeMode='contain' source={require('image!jumpto')}></Image>
+                <Image style={styles.icon_left} resizeMode='contain' source={require('../../img/jumpto.png')}></Image>
             </View>
 
         );
@@ -287,13 +291,13 @@ export default class homePage extends Component {
         return (
             <View>
                 <View style={styles.main_top}>
-                    <TouchableWithoutFeedback onPress={this._onRunFunction.bind(this)}>
-                        <Image style={styles.icon_left} resizeMode='contain' source={require('image!run_data_default')}></Image>
-                    </TouchableWithoutFeedback>
-                    <Image style={styles.top_icon} resizeMode='contain' source={require('image!keep5')}></Image>
-                    <TouchableWithoutFeedback onPress={this._onAddFunction.bind(this)}>
-                        <Image style={styles.icon_image} resizeMode='contain' source={require('image!add_icon')}></Image>
-                    </TouchableWithoutFeedback>
+                    <TouchableHighlight onPress={this._onRunFunction.bind(this)}>
+                        <Image style={styles.icon_left} resizeMode='contain' source={require('../../img/run_data_default.png')}></Image>
+                    </TouchableHighlight>
+                    <Image style={styles.top_icon} resizeMode='contain' source={require('../../img/keep5.png')}></Image>
+                    <TouchableHighlight onPress={this._onAddFunction.bind(this)}>
+                        <Image style={styles.icon_image} resizeMode='contain' source={require('../../img/add_icon.png')}></Image>
+                    </TouchableHighlight>
                 </View>
                 <ScrollView>
                     <TouchableWithoutFeedback onPress={() => this._toTrainHis()}>
@@ -302,7 +306,7 @@ export default class homePage extends Component {
                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: widthSrc - 20, marginLeft: 10, marginTop: 10, height: 30 }} >
                                     <Text style={{ fontSize: 13 }}>总共训练</Text>
                                     <Text></Text>
-                                    <Image style={[styles.icon_left,]} resizeMode='contain' source={require('image!jumpto')}></Image>
+                                    <Image style={[styles.icon_left,]} resizeMode='contain' source={require('../../img/jumpto.png')}></Image>
                                 </View>
                             </TouchableWithoutFeedback>
 
@@ -380,6 +384,7 @@ export default class homePage extends Component {
                     <View style={{ width: widthSrc, height: 10, backgroundColor: '#D8D8D8' }}>
 
                     </View>
+                    <TouchableHighlight>
                     <View >
                         <View style={{ height: 30, justifyContent: 'center' }}>
                             <Text style={{ width: widthSrc, marginLeft: 10 }}>课程表</Text>
@@ -390,6 +395,7 @@ export default class homePage extends Component {
                             <Text style={{ fontSize: 14, color: '#FFFFFF' }}>达成理想身材</Text>
                         </Image>
                     </View>
+                    </TouchableHighlight>
                 </ScrollView>
             </View>
         );

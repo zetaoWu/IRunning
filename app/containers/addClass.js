@@ -126,26 +126,26 @@ export default class addClass extends React.Component {
                     <View style={layouts.bgRedCoverViewLayout}>
                         <View style={[layouts.bgLayerLayout, { zIndex: 2 }]}>
                             {/*{'底'}*/}
-                            <Image style={layouts.bgRedCoverLayout} source={require('image!icon_redbagopen')} />
+                            <Image style={layouts.bgRedCoverLayout} source={require('../img/icon_redbagopen.png')} />
                         </View>
                         <View style={[layouts.bgLayerLayout, { zIndex: 2, flexDirection: 'row' }]}>
                             {/*{'钱币插在两个底之间'}*/}
-                            <Animated.Image style={[layouts.gold01Layout, { opacity: this.state.goldHidden }]} source={require('image!icon_gold01')} />
-                            <Animated.Image style={[layouts.gold02Layout, { opacity: this.state.goldHidden }]} source={require('image!icon_gold02')} />
-                            <Animated.Image style={[layouts.gold03Layout, { opacity: this.state.goldHidden }]} source={require('image!icon_gold03')} />
-                            <Animated.Image style={[layouts.gold04Layout, { opacity: this.state.goldHidden }]} source={require('image!icon_gold04')} />
-                            <Animated.Image style={[layouts.gold05Layout, { opacity: this.state.goldHidden }]} source={require('image!icon_gold05')} />
-                            <Animated.Image style={[layouts.gold06Layout, { opacity: this.state.goldHidden }]} source={require('image!icon_gold06')} />
-                            <Animated.Image style={[layouts.gold07Layout, { opacity: this.state.goldHidden }]} source={require('image!icon_gold07')} />
+                            <Animated.Image style={[layouts.gold01Layout, { opacity: this.state.goldHidden }]} source={require('../img/icon_gold01.png')} />
+                            <Animated.Image style={[layouts.gold02Layout, { opacity: this.state.goldHidden }]} source={require('../img/icon_gold02.png')} />
+                            <Animated.Image style={[layouts.gold03Layout, { opacity: this.state.goldHidden }]} source={require('../img/icon_gold03.png')} />
+                            <Animated.Image style={[layouts.gold04Layout, { opacity: this.state.goldHidden }]} source={require('../img/icon_gold04.png')} />
+                            <Animated.Image style={[layouts.gold05Layout, { opacity: this.state.goldHidden }]} source={require('../img/icon_gold05.png')} />
+                            <Animated.Image style={[layouts.gold06Layout, { opacity: this.state.goldHidden }]} source={require('../img/icon_gold06.png')} />
+                            <Animated.Image style={[layouts.gold07Layout, { opacity: this.state.goldHidden }]} source={require('../img/icon_gold07.png')} />
                         </View>
                         <View style={[layouts.bgLayerLayout, { zIndex: 2 }]}>
                             {/*{'底2'}*/}
-                            <Image style={layouts.bgRedCoverLayout2} source={require('image!icon_redbaghalf')} />
+                            <Image style={layouts.bgRedCoverLayout2} source={require('../img/icon_redbaghalf.png')} />
                         </View>
                         <View style={[layouts.bgLayerLayout, { zIndex: 2 }]}>
                             <Animated.Image
                                 //红包头
-                                source={require('image!icon_redbagtitle')}
+                                source={require('../img/icon_redbagtitle.png')}
                                 style={[layouts.bgRedTitleLayout,
                                 {
                                     transform: [
@@ -164,7 +164,7 @@ export default class addClass extends React.Component {
                         <View style={[layouts.bgLayerLayout, { zIndex: 1 }]}>
                             <Animated.Image
                                 //红包头底
-                                source={require('image!icon_redbaghead')}
+                                source={require('../img/icon_redbaghead.png')}
                                 style={[layouts.bgRedTitleBottomLayout,
                                 {
                                     transform: [
@@ -182,12 +182,12 @@ export default class addClass extends React.Component {
                         </View>
                         <View style={[layouts.bgLayerLayout, { zIndex: 1, flexDirection: 'row' }]}>
                             {/*{'星星'}*/}
-                            <Animated.Image source={require('image!icon_xing01')} style={[layouts.star01Layout, { opacity: this.state.starleftHidden }]} />
-                            <Animated.Image source={require('image!icon_xing02')} style={[layouts.star02Layout, { opacity: this.state.starrightHidden }]} />
-                            <Animated.Image source={require('image!icon_xing03')} style={[layouts.star03Layout, { opacity: this.state.starleftHidden }]} />
-                            <Animated.Image source={require('image!icon_xing04')} style={[layouts.star04Layout, { opacity: this.state.starrightHidden }]} />
-                            <Animated.Image source={require('image!icon_xing05')} style={[layouts.star05Layout, { opacity: this.state.starleftHidden }]} />
-                            <Animated.Image source={require('image!icon_xing06')} style={[layouts.star06Layout, { opacity: this.state.starrightHidden }]} />
+                            <Animated.Image source={require('../img/icon_xing01.png')} style={[layouts.star01Layout, { opacity: this.state.starleftHidden }]} />
+                            <Animated.Image source={require('../img/icon_xing02.png')} style={[layouts.star02Layout, { opacity: this.state.starrightHidden }]} />
+                            <Animated.Image source={require('../img/icon_xing03.png')} style={[layouts.star03Layout, { opacity: this.state.starleftHidden }]} />
+                            <Animated.Image source={require('../img/icon_xing04.png')} style={[layouts.star04Layout, { opacity: this.state.starrightHidden }]} />
+                            <Animated.Image source={require('../img/icon_xing05.png')} style={[layouts.star05Layout, { opacity: this.state.starleftHidden }]} />
+                            <Animated.Image source={require('../img/icon_xing06.png')} style={[layouts.star06Layout, { opacity: this.state.starrightHidden }]} />
                         </View>
                         <View style={[layouts.bgLayerLayout, { zIndex: 2 }]}>
                             <TouchableOpacity
@@ -201,7 +201,7 @@ export default class addClass extends React.Component {
                                 onPress={() => {
                                     this._ChangeToShake()
                                 } }>
-                                <Animated.Image source={require('image!icon_kai')} style={layouts.kai} />
+                                <Animated.Image source={require('../img/icon_kai.png')} style={layouts.kai} />
                             </TouchableOpacity>
                         </View>
                     </View>

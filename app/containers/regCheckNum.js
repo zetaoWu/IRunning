@@ -188,7 +188,7 @@ export default class regCheckNum extends Component {
         return (<View style={[styles.container, { marginTop: 20 }]}>
             <View style={styles.main_top}>
                 <TouchableOpacity onPress={() => self._onBackFunction()} >
-                    <Image style={styles.icon_left} resizeMode='contain' source={require('image!back_icon')}></Image>
+                    <Image style={styles.icon_left} resizeMode='contain' source={require('../img/back_icon.png')}></Image>
                 </TouchableOpacity>
                 <Text style={styles.reg}>注册</Text>
                 <View style={styles.icon_left}></View>
@@ -201,7 +201,7 @@ export default class regCheckNum extends Component {
 
             <View style={{ flexDirection: 'row', width: widthSrc - 30, height: 45 }}>
                 <View style={styles.checkborder}>
-                    <Image style={{ width: 12, height: 15, marginLeft: 10 }} resizeMode='contain' source={require('image!checknum')}></Image>
+                    <Image style={{ width: 12, height: 15, marginLeft: 10 }} resizeMode='contain' source={require('../img/checknum.png')}></Image>
                     <TextInput style={{ marginLeft: 7, height: 30, paddingTop: 1, paddingBottom: 1, borderColor: '#453d4b', width: Dimensions.get('window').width - 170, borderWidth: 1, color: '#FFFFFF' }}
                         placeholder='验证码'
                         placeholderTextColor='gray'
@@ -233,7 +233,7 @@ export default class regCheckNum extends Component {
             </View>
 
             <View style={styles.num}>
-                <Image style={{ width: 15, height: 18, marginLeft: 10 }} resizeMode='contain' source={require('image!icon_pwd')}></Image>
+                <Image style={{ width: 15, height: 18, marginLeft: 10 }} resizeMode='contain' source={require('../img/icon_pwd.png')}></Image>
                 <TextInput style={{ marginLeft: 5, height: 30, paddingTop: 1, paddingBottom: 1, borderColor: '#453d4b', width: Dimensions.get('window').width - 100, borderWidth: 1, color: '#FFFFFF' }}
                     placeholder='设置登录密码,至少六位'
                     placeholderTextColor='gray'

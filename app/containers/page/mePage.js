@@ -205,7 +205,7 @@ export default class mePage extends Component {
                             </View>
                             <View></View>
                             <View>
-                                <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('image!jumpto')}></Image>
+                                <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('../../img/jumpto.png')}></Image>
                             </View>
                         </View>
                     </TouchableOpacity>
@@ -252,21 +252,21 @@ export default class mePage extends Component {
                     <View style={{ width: widthSrc - 20, height: 45, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginLeft: 15, marginRight: 0 }}>
                         <Text style={{ fontSize: 14 }}>训练等级</Text>
                         <View></View>
-                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('../../img/jumpto.png')}  ></Image>
                     </View>
                     <View style={{ width: widthSrc, height: 1, backgroundColor: '#DaDaDa' }}></View>
 
                     <View style={{ width: widthSrc - 20, height: 45, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginLeft: 15, marginRight: 0 }}>
                         <Text style={{ fontSize: 14 }}>跑步等级</Text>
                         <View></View>
-                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('../../img/jumpto.png')}  ></Image>
                     </View>
                     <View style={{ width: widthSrc, height: 1, backgroundColor: '#D2D2D2' }}></View>
 
                     <View style={{ width: widthSrc - 20, height: 45, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginLeft: 15, marginRight: 0 }}>
                         <Text style={{ fontSize: 14 }}>我的徽章</Text>
                         <View></View>
-                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('../../img/jumpto.png')}  ></Image>
                     </View>
                     <View style={{ width: widthSrc, height: 10, backgroundColor: '#DaDaDa' }}></View>
 
@@ -274,21 +274,21 @@ export default class mePage extends Component {
                     <View style={{ width: widthSrc - 20, height: 45, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginLeft: 15, marginRight: 0 }}>
                         <Text style={{ fontSize: 14 }}>购物车</Text>
                         <View></View>
-                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('../../img/jumpto.png')}  ></Image>
                     </View>
                     <View style={{ width: widthSrc, height: 1, backgroundColor: '#DaDaDa' }}></View>
 
                     <View style={{ width: widthSrc - 20, height: 45, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginLeft: 15, marginRight: 0 }}>
                         <Text style={{ fontSize: 14 }}>我的订单</Text>
                         <View></View>
-                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('../../img/jumpto.png')}  ></Image>
                     </View>
                     <View style={{ width: widthSrc, height: 1, backgroundColor: '#D2D2D2' }}></View>
 
                     <View style={{ width: widthSrc - 20, height: 45, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginLeft: 15, marginRight: 0 }}>
                         <Text style={{ fontSize: 14 }}>优惠券</Text>
                         <View></View>
-                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                        <Image style={{ width: 17, height: 17 }} resizeMode='contain' source={require('../../img/jumpto.png')}  ></Image>
                     </View>
                     <View style={{ width: widthSrc, height: 10, backgroundColor: '#DaDaDa' }}></View>
                 </ScrollView>

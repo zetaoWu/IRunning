@@ -106,7 +106,7 @@ export default class UserInfo extends Component {
                         <View></View>
                         <View style={{ flexDirection: 'row' }}>
                             <Text>665分钟</Text>
-                            <Image style={{ width: 17, height: 17, marginLeft: 7 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                            <Image style={{ width: 17, height: 17, marginLeft: 7 }} resizeMode='contain' source={require('../img/jumpto.png')}  ></Image>
                         </View>
                     </View>
 
@@ -117,7 +117,7 @@ export default class UserInfo extends Component {
                         <View></View>
                         <View style={{ flexDirection: 'row' }}>
                             <Text>6</Text>
-                            <Image style={{ width: 17, height: 17, marginLeft: 7 }} resizeMode='contain' source={require('image!jumpto')}  ></Image>
+                            <Image style={{ width: 17, height: 17, marginLeft: 7 }} resizeMode='contain' source={require('../img/jumpto.png')}  ></Image>
                         </View>
                     </View>
 
