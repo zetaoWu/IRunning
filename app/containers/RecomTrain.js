@@ -82,17 +82,17 @@ export default class RecomTrain extends Component {
                     }}
                     scrollEventThrottle={15}>
 
-                    <Image style={{width: widthSrc, height: heightSrc/2-20}} resizeMode='stretch'
+                    <Image style={{width: widthSrc, height: heightSrc / 2 - 20}} resizeMode='stretch'
                            source={{uri: this.props.data.platImg}}>
-                        <View style={[styles.imageback,{width:widthSrc,alignItems:'center'}]}>
+                        <View style={[styles.imageback, {width: widthSrc, alignItems: 'center'}]}>
                             <Text style={{
                                 fontSize: 30,
                                 color: '#FFFFFF',
-                                marginTop: 100
+                                marginTop: 80
                             }}>{this.props.data.name}</Text>
                         </View>
 
-                        <View style={{flexDirection: 'row', marginTop: 18, justifyContent:'center'}}>
+                        <View style={{flexDirection: 'row', marginTop: 10, justifyContent: 'center'}}>
                             <View></View>
                             <View style={styles.imageback}>
                                 <Text style={{fontSize: 12, color: '#FFFFFF'}}>训练说明</Text>
@@ -100,6 +100,40 @@ export default class RecomTrain extends Component {
                             <View style={styles.imageback}>
                                 <Text style={{fontSize: 12, color: '#FFFFFF', marginLeft: 15}}>音乐设置</Text>
                             </View>
+                        </View>
+
+                        <View style={{position: 'absolute', width: widthSrc, bottom: 15}}>
+                            <View style={{
+                                flexDirection: 'row',
+                                marginTop: 5,
+                                justifyContent: 'space-between',
+                                marginLeft: 10,
+                                marginRight: 10,
+                            }}>
+                                <Text style={{fontSize: 11, color: '#FFFFFF'}}>训练</Text>
+                                <Text style={{fontSize: 11, color: '#FFFFFF'}}>平均</Text>
+                                <Text style={{fontSize: 11, color: '#FFFFFF'}}>难度</Text>
+                            </View>
+
+                            <View style={{
+                                flexDirection: 'row',
+                                marginTop: 5,
+                                justifyContent: 'space-between',
+                                marginLeft: 10,
+                                marginRight: 10,
+                                bottom:10,
+                            }}>
+                                <Text style={{fontSize: 12, color: '#FFFFFF'}}>10节</Text>
+                                <Text style={{fontSize: 12, color: '#FFFFFF'}}>23分钟</Text>
+                                <Text style={{fontSize: 12, color: '#FFFFFF'}}> K1</Text>
+                            </View>
+
+                            <View style={styles.button}>
+                                <Text
+                                    style={styles.getchecknum}> 加入训练
+                                </Text>
+                            </View>
+
                         </View>
                     </Image>
 
@@ -139,6 +173,19 @@ export default class RecomTrain extends Component {
 const styles = StyleSheet.create({
     imageback: {
         backgroundColor: 'rgba(0,0,0,0)',
+    },
+    button: {
+        width: Dimensions.get('window').width - 30,
+        left: 15,
+        height: 45,
+        borderRadius: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#2E8B57',
+    },
+    getchecknum: {
+        color: '#EEEEEE',
+        fontSize: 15,
     },
     main_top: {
         paddingLeft: 10,

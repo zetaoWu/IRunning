@@ -1,23 +1,11 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
-    StyleSheet,
     Text,
     View,
-    Platform,
-    UIManager,
     TouchableOpacity,
-    LayoutAnimation,
-    Animated,
     Dimensions,
     Image,
-    Easing,
-    BackAndroid,
-    ToastAndroid,
     ListView,
-    TouchableNativeFeedback,
-    TouchableWithoutFeedback,
-    StatusBar,
     ScrollView,
     ART,
 } from 'react-native';

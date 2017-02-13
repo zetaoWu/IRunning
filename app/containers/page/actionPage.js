@@ -1,23 +1,9 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
-    Text,
     View,
-    Platform,
-    UIManager,
-    TouchableOpacity,
-    LayoutAnimation,
-    Animated,
-    Dimensions,
     Image,
-    Easing,
-    BackAndroid,
-    ToastAndroid,
     PanResponder,
-    TouchableNativeFeedback,
-    TouchableWithoutFeedback,
-    StatusBar,
 } from 'react-native';
 import { toastShort } from '../../utils/ToastUtil';
 var CIRCLE_SIZE = 80;

@@ -1,25 +1,11 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     StyleSheet,
     Text,
     View,
-    Platform,
-    UIManager,
-    TouchableOpacity,
-    LayoutAnimation,
-    Animated,
     Dimensions,
     Image,
-    Easing,
-    BackAndroid,
-    ToastAndroid,
-    TouchableNativeFeedback,
-    TouchableWithoutFeedback,
-    StatusBar,
     PanResponder,
-    WebView,
-    ScrollView,
 } from 'react-native';
 
 var ScrollableTabView = require('react-native-scrollable-tab-view');

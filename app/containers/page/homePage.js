@@ -10,6 +10,7 @@ import {
     ToastAndroid,
     TouchableWithoutFeedback,
     TouchableHighlight,
+    InteractionManager,
     StatusBar,
 } from 'react-native';
 import { toastShort } from '../../utils/ToastUtil';
@@ -62,7 +63,26 @@ export default class homePage extends Component {
         var num = this.props.username;
         console.log(num + '----------');
 
-        this._reqDataServer();
+
+        InteractionManager.runAfterInteractions(() => {
+            // this._showOrHide();
+            this._showOrHide();
+            //执行耗时的同步任务
+            this._reqDataServer();
+        });
+    }
+
+    // 按钮响应方法，切换显示与隐藏
+    _showOrHide() {
+        if (this.state.animating) {
+            this.setState({
+                animating: false
+            });
+        } else {
+            this.setState({
+                animating: true
+            });
+        }
     }
 
     _reqDataServer() {
@@ -105,7 +125,7 @@ export default class homePage extends Component {
                 }
             });
 
-        //请求推荐文章 
+        //请求推荐文章
         fetch(url.COMMEND_READ, {
             method: 'GET',
             headers: {
@@ -124,7 +144,7 @@ export default class homePage extends Component {
                 }
             });
 
-        //请求推荐训练   取训练列表中前10 
+        //请求推荐训练   取训练列表中前10
         fetch(url.COMMEND_TRAIN, {
             method: 'GET',
             headers: {
@@ -180,7 +200,7 @@ export default class homePage extends Component {
     }
 
     _pressRecomTrain(rowData) {
-       console.log(rowData);
+        console.log(rowData);
 
         this.props.navigator.push({
             id: 'recomTrain',
@@ -206,7 +226,7 @@ export default class homePage extends Component {
         return (
             <TouchableHighlight onPress={() => this._commendRead(rowData)}>
                 <View style={{ justifyContent: 'space-between', width: 260, marginRight: 7 }}>
-                    <Image style={{ marginRight: 10, width: 260, height: 130 }} resizeMode='cover' source={{ uri: rowData.platImg }}></Image>
+                    <Image style={{ marginRight: 10, width: 260, height: 130 }} resizeMode='cover' source={{ uri: rowData.platImg ? rowData.platImg : 'wrong' }}></Image>
                     <Text style={{ alignSelf: 'center', justifyContent: 'center', fontSize: 17, height: 20 }} numberOfLines={1}>{rowData.title}</Text>
                     <Text style={{ alignSelf: 'center', justifyContent: 'center', fontSize: 13, height: 20, marginTop: 3 }} numberOfLines={1}>{rowData.introduction}</Text>
                 </View>
@@ -218,7 +238,7 @@ export default class homePage extends Component {
     _renderItemData(rowData, rowID) {
         return (
             <TouchableHighlight onPress={() => this._pressRow(rowData)}>
-                <Image style={{ width: widthSrc, height: 130, marginTop: 2, justifyContent: 'space-between' }} resizeMode='cover' source={{ uri: rowData.trainID.platImg }}>
+                <Image style={{ width: widthSrc, height: 130, marginTop: 2, justifyContent: 'space-between' }} resizeMode='cover' source={{ uri: rowData.trainID.platImg? rowData.trainID.platImg:'wrong'}}>
                     <Text style={{ color: '#FFFFFF', fontSize: 20, marginLeft: 15, marginTop: 15 }}>{rowData.trainID.name}</Text>
                     <View></View>
                     <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
@@ -233,7 +253,7 @@ export default class homePage extends Component {
     _renItemRecomTrain(rowData, rowID) {
         return (
             <TouchableHighlight onPress={() => this._pressRecomTrain(rowData)}>
-                <Image style={{ width: 260, height: 140, marginTop: 2, justifyContent: 'space-between', marginRight: 7 }} resizeMode='cover' source={{ uri: rowData.platImg }}>
+                <Image style={{ width: 260, height: 140, marginTop: 2, justifyContent: 'space-between', marginRight: 7 }} resizeMode='cover' source={{ uri: rowData.platImg ?rowData.platImg : 'wrong'}}>
                     <View >
                         <Text style={{ color: '#FFFFFF', fontSize: 18, marginLeft: 15, marginTop: 15 }}>{rowData.name}</Text>
                         <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 18, marginTop: 2 }}>{rowData.joinNum}已参加</Text>
@@ -396,7 +416,7 @@ export default class homePage extends Component {
                             <View style={{ height: 30, justifyContent: 'center' }}>
                                 <Text style={{ width: widthSrc, marginLeft: 10 }}>课程表</Text>
                             </View>
-                            <Image style={{ width: widthSrc, height: 200, alignItems: 'center', justifyContent: 'center' }} resizeMode='stretch' source={{ uri: this.state.schedule }}>
+                            <Image style={{ width: widthSrc, height: 200, alignItems: 'center', justifyContent: 'center' }} resizeMode='stretch' source={{ uri: this.state.schedule?this.state.schedule : 'wrong'}}>
                                 <Text style={{ fontSize: 25, color: '#FFFFFF', fontWeight: '300' }}>定制课程表</Text>
                                 <Text style={{ marginTop: 7, fontSize: 14, color: '#FFFFFF' }}>量身定制1-4周训练安排</Text>
                                 <Text style={{ fontSize: 14, color: '#FFFFFF' }}>达成理想身材</Text>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, View, Text, InteractionManager, TextInput, BackAndroid, ToastAndroid, Platform, TouchableHighlight, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet, View, Text, InteractionManager, TextInput, BackAndroid, Platform, TouchableHighlight, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
 var TimerMixin = require('react-timer-mixin');
@@ -73,17 +73,17 @@ export default class regCheckNum extends Component {
             })
         }).then((response) => response.json())
             .then((responseJson) => {
-                // ToastAndroid.show('您的验证码是' + this._getRandomNum() + '，有效期为10分钟。您正在使用iRunning的验证码。', 3);
+                // toastShort('您的验证码是' + this._getRandomNum() + '，有效期为10分钟。您正在使用iRunning的验证码。);
                 if (responseJson.smsId) {
-                    ToastAndroid.show('已发送至您的手机', 3);
+                    toastShort('已发送至您的手机');
                     //正确号码
                     this.setState({ isSendMsg: 1 });
                     this._openRegCheckNum();
                 } else {
-                    ToastAndroid.show('异常' + responseJson, 3);
+                    toastShort('异常' + responseJson);
                 }
             }).catch((error) => {
-                ToastAndroid.show('发送失败,请重试', 3);
+                toastShort('发送失败,请重试');
             });
     }
 
@@ -123,10 +123,10 @@ export default class regCheckNum extends Component {
                 if (this.state.password.length >= 6) {
                     this._regUptoSer(this.state.password);
                 } else {
-                    ToastAndroid.show("请输入至少6位密码", 3);
+                    toastShort("请输入至少6位密码");
                 }
             } else {
-                ToastAndroid.show("请输入至少6位密码", 3);
+                toastShort("请输入至少6位密码");
             }
         } else {
             toastShort('请输入正确验证码');
@@ -150,13 +150,13 @@ export default class regCheckNum extends Component {
         }).then((response) => response.json())
             .then((responseJson) => {
                 if (responseJson.code === 202 && parseInt(('' + responseJson.error).indexOf('already')) >= 0) {
-                    ToastAndroid.show(this.props.num + '已经被注册', 3);
+                    toastShort(this.props.num + '已经被注册');
                 } else {
-                    ToastAndroid.show('注册成功', 3);
+                    toastShort('注册成功');
                     this._onJumpMain(this.props.num, pwd);
                 }
             }).catch((error) => {
-                ToastAndroid.show('网络异常连接异常啦' + error, 3);
+            toastShort('网络异常连接异常啦' + error);
             });
     }
 

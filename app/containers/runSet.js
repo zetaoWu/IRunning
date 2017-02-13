@@ -7,12 +7,11 @@ import {
     Image,
     StatusBar,
     ListView,
-    ToastAndroid,
     Switch,
     TouchableWithoutFeedback,
     BackAndroid,
 } from 'react-native';
-
+import { toastShort } from '../utils/ToastUtil';
 // 名字
 var NAMES = [
     'Girls Generation',
@@ -61,7 +60,7 @@ export default class runSet extends Component {
 
     _onPress(value) {
         this.setState({ voicePlayIsOn: value })
-        ToastAndroid.show(value + "", 3);
+        toastShort(value + "");
     }
 
     _renderSetRow(rowData, sectionID, rowID) {

@@ -9,6 +9,7 @@ import {
     TextInput,
     TouchableHighlight,
     StatusBar,
+    ActivityIndicator,
 } from 'react-native';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
@@ -24,6 +25,7 @@ export default class login extends Component {
             password: '',
             isAccount: '',
             isPwd: '',
+            animating:false,
         };
     }
 
@@ -32,10 +34,24 @@ export default class login extends Component {
             if (this.state.password.length < 6) {
                 toastShort('密码格式不正确');
             } else {
+                // this._showOrHide();
                 this._reqServerLogin();
             }
         } else {
             toastShort('请输入正确账号');
+        }
+    }
+
+    // 按钮响应方法，切换显示与隐藏
+    _showOrHide() {
+        if (this.state.animating) {
+            this.setState({
+                animating: false
+            });
+        } else {
+            this.setState({
+                 animating: true
+            });
         }
     }
 
@@ -48,6 +64,8 @@ export default class login extends Component {
             },
         }).then((response) => response.json())
             .then((responseJSON) => {
+                // this._showOrHide();
+
                 if (responseJSON.error) {
                     toastShort('账号密码不正确');
                 } else {
@@ -81,6 +99,12 @@ export default class login extends Component {
                     hidden={false}
                     animated={true}
                     />
+
+                <ActivityIndicator
+                    animating={this.state.animating}
+                    style={[styles.centering, {height: 80}]}
+                    size="large" />
+
                 <View style={[styles.main_top, { marginTop: 20 }]}>
                     <TouchableWithoutFeedback onPress={() => this._onBackFunction()}>
                         <Image style={styles.icon_left} resizeMode='contain' source={require('../img/back_icon.png')}></Image>
@@ -137,7 +161,7 @@ export default class login extends Component {
                         <View style={(this.state.isAccount == '1' && this.state.isPwd) ? styles.buttonInputAfter : styles.button}>
                             <Text
                                 style={styles.getchecknum}>登录
-                        </Text>
+                             </Text>
                         </View>
                     </TouchableHighlight>
                 </View>
@@ -198,6 +222,13 @@ const styles = StyleSheet.create({
         height: 0.2,
         width: Dimensions.get('window').width,
         backgroundColor: '#999999',
+    },
+    centering: {
+        position:'absolute',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 8,
+        zIndex:2,
     },
     reg: {
         alignItems: 'center',

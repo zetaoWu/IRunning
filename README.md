@@ -1,7 +1,10 @@
 # IRunning 依照keep风格 仅限个人开发,严禁用于商业用途。
 React native开发的一款运动软件  练手中 </br>
 </br>
-下载地址 </br>
+目前基本界面适配Android 和 IOS， 定位功能暂时未支持IOS ，集成的Android高德sdk</br>
+</br>
+</br>
+Android下载地址 </br>
 ![下载地址](https://github.com/zetaoWu/IRunning/blob/master/display/F84B3644C4872827C2535DD511B5E057.png)</br>
 </br>
 首页展示 </br>
@@ -21,13 +24,21 @@ React native开发的一款运动软件  练手中 </br>
 </br>
 </br>
 </br>
+</br>
+</br>
+</br>
 ----2017.1.4 发布新动态界面完成。</br>
 缺陷待解决：</br>
 1.部分界面没接入网络。</br>
 2.图片的后期处理不够灵活。</br>
 3.地图选择地点改功能。</br>
-4.完全适配Android，IOS部分界面不兼容（部分插件问题）。</br>
 
 
+----2017.2.13 界面和基本功能兼容Android和IOS。</br>
+缺陷待解决：</br>
+1.部分界面实现界面效果为主，未介入网络。</br>
+2.界面跳转更加灵活。</br>
+3.地图问题暂时没有好的解决方案，只能集成sdk链接原生实现。
+4.修改了waring 警告。
 
 

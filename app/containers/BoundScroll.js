@@ -15,6 +15,7 @@ var SCROLL_EVENT_THROTTLE = 100;
 var SCROLL_ACC = 5;
 var deviceWidth = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
+
 export default class BoundScroll extends Component {
     constructor(props) {
         super(props);
@@ -207,7 +208,6 @@ export default class BoundScroll extends Component {
         }, 1000)
     };
 
-
     _pressRow(rowID) {
         this._pressData[rowID] = !this._pressData[rowID];
         this.setState({
@@ -217,7 +217,6 @@ export default class BoundScroll extends Component {
         });
     };
 };
-
 
 var styles = StyleSheet.create({
     row: {
@@ -247,7 +246,6 @@ var styles = StyleSheet.create({
     }
     ,
     list: {
-        translateX: 0,
         backgroundColor: 'red',
         width: deviceWidth
     },

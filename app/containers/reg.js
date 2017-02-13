@@ -9,7 +9,6 @@ import {
     BackAndroid,
     TouchableWithoutFeedback,
     TextInput,
-    ToastAndroid,
     TouchableHighlight,
     StatusBar,
 } from 'react-native';
@@ -42,8 +41,7 @@ export default class reg extends Component {
     }
 
     onBackAndroid = () => {
-        const { navigator } = this.props;
-        const routers = navigator.getCurrentRoutes();
+        const routers = this.props.navigator.getCurrentRoutes();
         console.log('当前路由长度：' + routers.length);
         if (routers.length > 1) {
             navigator.pop();
@@ -59,12 +57,12 @@ export default class reg extends Component {
     _onPressButton() {
         let inputnum = this.state.text;
         if (this.state.isReged === 1) {
-            ToastAndroid.show('该号码已被注册', 3);
+            toastShort('该号码已被注册');
             return;
         }
 
         if (inputnum.length !== 11) {
-            ToastAndroid.show("手机号码输入错误", 3);
+            toastShort("手机号码输入错误");
             return;
         }
 
@@ -75,26 +73,26 @@ export default class reg extends Component {
             headers: {
                 'X-Bmob-Application-Id': config.ApplicationID,
                 'X-Bmob-REST-API-Key': config.RESTAPIKey,
-                'Content-Type': 'application/json',
+                'Content-Type':'application/json',
             },
             body: JSON.stringify({
-                mobilePhoneNumber: this.state.text,
-                template: "CheckNum",
+                'mobilePhoneNumber': this.state.text,
+                // template: "CheckNum",
                 // content: '您的验证码是' + this._getRandomNum() + '，有效期为10分钟。您正在使用iRunning的验证码。',
             })
         }).then((response) => response.json())
             .then((responseJson) => {
-                // ToastAndroid.show('您的验证码是' + this._getRandomNum() + '，有效期为10分钟。您正在使用iRunning的验证码。', 3);
+                // toastShort('您的验证码是' + this._getRandomNum() + '，有效期为10分钟。您正在使用iRunning的验证码。');
                 if (responseJson.smsId) {
-                    ToastAndroid.show('已发送至您的手机', 3);
+                    toastShort('已发送至您的手机');
                     //正确号码
                     this.setState({ isSendMsg: 1 });
                     this._openRegCheckNum();
                 } else {
-                    ToastAndroid.show('发送短信异常', 3);
+                    toastShort('发送短信异常'+response.error);
                 }
             }).catch((error) => {
-                ToastAndroid.show('发送失败,请重试', 3);
+                toastShort('发送失败,请重试');
             });
 
         var code = this._getRandomNum();
@@ -103,6 +101,7 @@ export default class reg extends Component {
         this.setState({ isSendMsg: 1 });
         this._openRegCheckNum(code);
     }
+
     //判断是否被注册
     _regUptoSer(number) {
         fetch(BASE_SQL + 'select * from _User where username="' + number + '"', {
@@ -114,7 +113,7 @@ export default class reg extends Component {
         }).then((response) => response.json())
             .then((responseJson) => {
                 if (responseJson.results.length > 0) {
-                    ToastAndroid.show(number + '已经被注册', 3);
+                    toastShort(number + '已经被注册');
                     this.setState({
                         isReged: 1,
                     });
@@ -122,10 +121,10 @@ export default class reg extends Component {
                     this.setState({
                         isReged: 0,
                     });
-                    ToastAndroid.show(number + '暂未注册', 3);
+                    toastShort(number + '暂未注册');
                 }
             }).catch((error) => {
-                ToastAndroid.show('网络异常连接异常啦', 3);
+                toastShort('网络异常连接异常啦');
             });
     }
 

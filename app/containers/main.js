@@ -44,11 +44,11 @@ export default class main extends Component {
                 'loginState',
                 this.props.username, function (err) {
                     if (err) {
-                        toastShort("存储错误" + err);
+                        // toastShort("存储错误" + err);
                         console.log('存储错误');
                     }
                     if (!err) {
-                        toastShort("存储成功");
+                        // toastShort("存储成功");
                     }
                 }
             );
