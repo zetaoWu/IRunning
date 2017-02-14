@@ -36,6 +36,10 @@ node_modules
 node_modules/
 npm-debug.log
 
+.jks
+.keystore
+.apk
+
 # BUCK
 buck-out/
 \.buckd/
