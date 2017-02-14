@@ -5,7 +5,7 @@ React native开发的一款运动软件  练手中 </br>
 目前基本界面适配Android 和 IOS， 定位功能暂时未支持IOS ，集成的Android高德sdk</br>
 </br>
 </br>
- 
+
 Android下载地址 </br>
 ![下载地址](https://github.com/zetaoWu/IRunning/blob/master/display/F84B3644C4872827C2535DD511B5E057.png)</br>
 </br>
