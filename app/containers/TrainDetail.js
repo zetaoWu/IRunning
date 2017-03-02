@@ -45,8 +45,6 @@ export default class trainDetail extends Component {
         return false;//默认行为  
     };
 
-
-
     _backFunction() {
         const {navigator} = this.props;
         if (navigator) {

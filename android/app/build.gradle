@@ -83,7 +83,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "23.0.2"
 
 
     sourceSets{
@@ -150,6 +150,10 @@ android {
                         versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
             }
         }
+    }
+
+    task clean(type: Delete) {
+        delete rootProject.buildDir
     }
 }
 

@@ -313,6 +313,7 @@ export default class homePage extends Component {
             });
         }
     }
+
     //<NavbarComp navigator={this.props.navigator} />
     render() {
         return (

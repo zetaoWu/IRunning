@@ -14,6 +14,7 @@ import {
 
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
+import {DATA} from '../config.js';
 
 export default class RecomTrain extends Component {
     constructor(props) {
@@ -137,8 +138,7 @@ export default class RecomTrain extends Component {
                         </View>
                     </Image>
 
-                    <Text style={{fontSize: 30, height: 200}}>数据数据</Text>
-                    <Text style={{fontSize: 30, height: 200}}>数据数据</Text>
+
                     <Text style={{fontSize: 30, height: 200}}>数据数据</Text>
                     <Text style={{fontSize: 30, height: 200}}>数据数据</Text>
                     <Text style={{fontSize: 30, height: 200}}>数据数据</Text>
