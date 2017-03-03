@@ -1,10 +1,11 @@
 //基地址
 var baseUrl = 'https://api.bmob.cn/1/';
 export const USER_REG = baseUrl + 'users';
-//验证验证码
+//请求验证码
 export const GET_CHECK_NUM = baseUrl + 'requestSmsCode';
 // export const GET_CHECK_NUM = baseUrl + 'requestSms';
-
+//验证 短信码
+export const CHECK_SNS_NUM=baseUrl+'verifySmsCode';
 //使用sql语句查找
 export const BASE_SQL = baseUrl + 'cloudQuery?bql=';
 //获取我的收藏夹里面的训练内容

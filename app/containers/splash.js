@@ -33,10 +33,8 @@ export default class splash extends Component {
 
         AsyncStorage.getItem('loginState', function (err, result) {
             if (err) {
-                // ToastAndroid.show(err + '----err-------', 3);
                 return;
             }
-            // ToastAndroid.show(result + '-----result------', 3);
             if (result) {
                 that.timer = setTimeout(() => {
                     that._goNextScene(mainComponent, result, 'main');
@@ -52,21 +50,18 @@ export default class splash extends Component {
 
     _goNextScene(nextRoute, result, id) {
         // this.st.navigator.resetTo(nextRoute);
-            this.props.navigator.resetTo({
-                title: nextRoute + '',
-                id: id + '',
-                name: nextRoute + '',
-                params: {
-                    username: result,
-                }
-            })
+        this.props.navigator.resetTo({
+            title: nextRoute + '',
+            id: id + '',
+            name: nextRoute + '',
+            params: {
+                username: result,
+            }
+        })
     }
 
     _backFunction() {
-        const {navigator} = this.props;
-        if (navigator) {
-            navigator.pop();
-        }
+        this.props.navigator.pop();
     }
 
     render() {
@@ -92,15 +87,13 @@ export default class splash extends Component {
     }
 
     onBackAndroid = () => {
-        const { navigator } = this.props;
-        const routers = navigator.getCurrentRoutes();
+        const routers = this.props.navigator.getCurrentRoutes();
         console.log('当前路由长度：' + routers.length);
         if (routers.length > 1) {
             navigator.pop();
             return true;//接管默认行为  
         }
         return false;//默认行为  
-
     };
 }
 

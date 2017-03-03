@@ -14,13 +14,14 @@ export default class regCheckNum extends Component {
         this.state = {
             checkNum: '',
             password: '',
-            deadtime: 10,
+            deadtime: 60,
+            isNum: false,
         };
         mixins: [TimerMixin]
     }
 
     componentDidMount() {
-        const {navigator} = this.props;
+        const { navigator } = this.props;
         if (this.props.num) {
             console.log('传递过来的号码是：' + this.props.num);
         };
@@ -34,6 +35,7 @@ export default class regCheckNum extends Component {
             this._setInvertTime();
         });
     }
+
     _setInvertTime() {
         this.interval = setInterval(() => { this.setState({ deadtime: (this.state.deadtime - 1) }); }, 1000);
     }
@@ -73,17 +75,13 @@ export default class regCheckNum extends Component {
             })
         }).then((response) => response.json())
             .then((responseJson) => {
-                // toastShort('您的验证码是' + this._getRandomNum() + '，有效期为10分钟。您正在使用iRunning的验证码。);
                 if (responseJson.smsId) {
                     toastShort('已发送至您的手机');
-                    //正确号码
-                    this.setState({ isSendMsg: 1 });
-                    this._openRegCheckNum();
                 } else {
                     toastShort('异常' + responseJson);
                 }
             }).catch((error) => {
-                toastShort('发送失败,请重试');
+                toastShort('Bmob后台短信发完了 好尴尬');
             });
     }
 
@@ -95,47 +93,73 @@ export default class regCheckNum extends Component {
     }
 
     onBackAndroid = () => {
-        const { navigator } = this.props;
-        const routers = navigator.getCurrentRoutes();
+        const routers = this.props.navigator.getCurrentRoutes();
         console.log('当前路由长度：' + routers.length);
         if (routers.length > 1) {
-            navigator.pop();
+           this.props.navigator.pop();
             return true;//接管默认行为  
         }
         return false;//默认行为  
     };
 
     _onBackFunction() {
-        const { navigator } = this.props;
-        if (navigator) {
-            navigator.pop();
-        }
+        this.props.navigator.pop();
     }
     /**
      * 1.先核对验证码 this.state.checkNum
      * 2.验证码true-> 输入密码  注册成功
      */
     _onNextStep() {
-        //先核对验证码
-        if (this.state.checkNum === this.props.code) {
-            //输入密码：
-            if (this.state.password) {
-                if (this.state.password.length >= 6) {
+        if (this.state.checkNum.length !== 6) {
+            toastShort("验证码格式不正确");
+            return;
+        }
+
+        //输入密码：
+        if (this.state.password) {
+            if (this.state.password.length >= 6) {
+                //验证码正确
+                if (this.state.isNum) {
                     this._regUptoSer(this.state.password);
                 } else {
-                    toastShort("请输入至少6位密码");
+                    toastShort("验证码错误");
                 }
             } else {
                 toastShort("请输入至少6位密码");
             }
         } else {
-            toastShort('请输入正确验证码');
-            return;
+            toastShort("请输入至少6位密码");
         }
     }
 
+    _reqCheckCode(smsNum) {
+        fetch(url.CHECK_SNS_NUM + "/" + smsNum, {
+            method: 'POST',
+            headers: {
+                'X-Bmob-Application-Id': config.config.ApplicationID,
+                'X-Bmob-REST-API-Key': config.config.RESTAPIKey,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                mobilePhoneNumber: this.props.num,
+            })
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                if (responseJson.msg === "ok") {
+                    toastShort("验证成功");
+                    this.setState({
+                        isNum: true,
+                    });
+                } else {
+                    toastShort('验证码不正确');
+                }
+            }).catch((error) => {
+                toastShort('验证码不正确');
+            });
+    }
+
     _regUptoSer(pwd) {
-        //检验验证码
+        //将密码上传服务器
         fetch(url.USER_REG, {
             method: 'POST',
             headers: {
@@ -146,6 +170,10 @@ export default class regCheckNum extends Component {
             body: JSON.stringify({
                 username: this.props.num,
                 password: pwd,
+                traninCount: '0',
+                totalBurnCal: '0',
+                totalDayNum: '0',
+                totalTime: '0',
             })
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -156,17 +184,16 @@ export default class regCheckNum extends Component {
                     this._onJumpMain(this.props.num, pwd);
                 }
             }).catch((error) => {
-            toastShort('网络异常连接异常啦' + error);
+                toastShort('网络异常连接异常啦' + error);
             });
     }
 
     _onJumpMain(username, password) {
         var tellnum = this.state.text;
-        const {navigator} = this.props;
+        const { navigator } = this.props;
         if (navigator) {
             navigator.push({
-                name: 'mainComponent',
-                component: mainComponent,
+                id: 'main',
                 params: {
                     username: username,
                     password: password
@@ -174,7 +201,6 @@ export default class regCheckNum extends Component {
             });
         }
     }
-
 
     render() {
         {
@@ -209,26 +235,24 @@ export default class regCheckNum extends Component {
                         selectionColor='#FFFFFF'
                         underlineColorAndroid='transparent'
                         onChangeText={(text) => {
-                            if (text.length > 0) {
-
-                            } else {
-
-                            };
+                            if (text.length === 6) {
+                                //先核对验证码
+                                this._reqCheckCode(text);
+                            }
                             this.setState({ checkNum: text })
-                        } }
+                        }}
                         value={this.state.checkNum}></TextInput>
                 </View>
                 {
                     // 计时器===0说明  。需要修改界面，并可以重新发送验证码 
                     this.state.deadtime === 0 ? <View style={{ flex: 1, marginLeft: 15, borderRadius: 3, borderColor: '#2E8B57', borderWidth: 0.8, height: 45, width: 95, justifyContent: 'center', alignItems: 'center' }}>
-                        <TouchableOpacity onPress={() => { self._reGetCheckNum() } }>
+                        <TouchableOpacity onPress={() => { self._reGetCheckNum() }}>
                             <Text style={{ color: '#2e8857', fontSize: 14 }}>重获验证码</Text>
                         </TouchableOpacity>
-                    </View> : <TouchableOpacity onPress={() => { } }><View style={{ flex: 1, marginLeft: 15, borderRadius: 3, borderColor: '#2E8B57', borderWidth: 0.8, height: 45, width: 95, justifyContent: 'center', alignItems: 'center' }}>
+                    </View> :  <View style={{ flex: 1, marginLeft: 15, borderRadius: 3, borderColor: '#2E8B57', borderWidth: 0.8, height: 45, width: 95, justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ color: '#2e8857', fontSize: 14 }}>重获验证码</Text>
                         <Text style={{ color: '#2e8857', fontSize: 14 }}>{this.state.deadtime}</Text>
                     </View>
-                        </TouchableOpacity>
                 }
             </View>
 
@@ -247,7 +271,7 @@ export default class regCheckNum extends Component {
 
                         };
                         this.setState({ password: text })
-                    } }
+                    }}
                     value={this.state.password}></TextInput>
             </View>
 

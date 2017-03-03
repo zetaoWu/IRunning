@@ -182,21 +182,15 @@ export default class homePage extends Component {
     }
 
     _onRunFunction() {
-        const { navigator } = this.props;
-        if (navigator) {
-            navigator.push({
-                id: 'runComponent',
-            })
-        }
+        this.props.navigator.push({
+            id: 'runComponent',
+        })
     }
 
     _onAddFunction() {
-        const {navigator} = this.props;
-        if (navigator) {
-            navigator.push({
-                id: 'addClass',
-            });
-        }
+        his.props.navigator.push({
+            id: 'addClass',
+        });
     }
 
     _pressRecomTrain(rowData) {
@@ -238,7 +232,7 @@ export default class homePage extends Component {
     _renderItemData(rowData, rowID) {
         return (
             <TouchableHighlight onPress={() => this._pressRow(rowData)}>
-                <Image style={{ width: widthSrc, height: 130, marginTop: 2, justifyContent: 'space-between' }} resizeMode='cover' source={{ uri: rowData.trainID.platImg? rowData.trainID.platImg:'wrong'}}>
+                <Image style={{ width: widthSrc, height: 130, marginTop: 2, justifyContent: 'space-between' }} resizeMode='cover' source={{ uri: rowData.trainID.platImg ? rowData.trainID.platImg : 'wrong' }}>
                     <Text style={{ color: '#FFFFFF', fontSize: 20, marginLeft: 15, marginTop: 15 }}>{rowData.trainID.name}</Text>
                     <View></View>
                     <View style={{ flexDirection: 'row', marginLeft: 17, marginBottom: 15, alignItems: 'center' }}>
@@ -253,7 +247,7 @@ export default class homePage extends Component {
     _renItemRecomTrain(rowData, rowID) {
         return (
             <TouchableHighlight onPress={() => this._pressRecomTrain(rowData)}>
-                <Image style={{ width: 260, height: 140, marginTop: 2, justifyContent: 'space-between', marginRight: 7 }} resizeMode='cover' source={{ uri: rowData.platImg ?rowData.platImg : 'wrong'}}>
+                <Image style={{ width: 260, height: 140, marginTop: 2, justifyContent: 'space-between', marginRight: 7 }} resizeMode='cover' source={{ uri: rowData.platImg ? rowData.platImg : 'wrong' }}>
                     <View >
                         <Text style={{ color: '#FFFFFF', fontSize: 18, marginLeft: 15, marginTop: 15 }}>{rowData.name}</Text>
                         <Text style={{ color: '#FFFFFF', fontSize: 12, marginLeft: 18, marginTop: 2 }}>{rowData.joinNum}已参加</Text>
@@ -304,14 +298,11 @@ export default class homePage extends Component {
     }
 
     _toTrainHis() {
-        const {navigator} = this.props;
-        if (navigator) {
-            navigator.push({
-                name: 'TrainHisView',
-                title: '所有训练历史',
-                id: 'trainHis',
-            });
-        }
+        this.props.navigator.push({
+            name: 'TrainHisView',
+            title: '所有训练历史',
+            id: 'trainHis',
+        });
     }
 
     //<NavbarComp navigator={this.props.navigator} />
@@ -417,7 +408,7 @@ export default class homePage extends Component {
                             <View style={{ height: 30, justifyContent: 'center' }}>
                                 <Text style={{ width: widthSrc, marginLeft: 10 }}>课程表</Text>
                             </View>
-                            <Image style={{ width: widthSrc, height: 200, alignItems: 'center', justifyContent: 'center' }} resizeMode='stretch' source={{ uri: this.state.schedule?this.state.schedule : 'wrong'}}>
+                            <Image style={{ width: widthSrc, height: 200, alignItems: 'center', justifyContent: 'center' }} resizeMode='stretch' source={{ uri: this.state.schedule ? this.state.schedule : 'wrong' }}>
                                 <Text style={{ fontSize: 25, color: '#FFFFFF', fontWeight: '300' }}>定制课程表</Text>
                                 <Text style={{ marginTop: 7, fontSize: 14, color: '#FFFFFF' }}>量身定制1-4周训练安排</Text>
                                 <Text style={{ fontSize: 14, color: '#FFFFFF' }}>达成理想身材</Text>

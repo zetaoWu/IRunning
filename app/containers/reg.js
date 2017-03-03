@@ -44,7 +44,7 @@ export default class reg extends Component {
         const routers = this.props.navigator.getCurrentRoutes();
         console.log('当前路由长度：' + routers.length);
         if (routers.length > 1) {
-            navigator.pop();
+            this.props.navigator.pop();
             return true;//接管默认行为  
         }
         return false;//默认行为  
@@ -56,13 +56,14 @@ export default class reg extends Component {
 
     _onPressButton() {
         let inputnum = this.state.text;
-        if (this.state.isReged === 1) {
-            toastShort('该号码已被注册');
+        
+        if (inputnum.length !== 11) {
+            toastShort("手机号码输入错误");
             return;
         }
 
-        if (inputnum.length !== 11) {
-            toastShort("手机号码输入错误");
+        if (this.state.isReged === 1) {
+            toastShort('该号码已被注册');
             return;
         }
 
@@ -73,7 +74,7 @@ export default class reg extends Component {
             headers: {
                 'X-Bmob-Application-Id': config.ApplicationID,
                 'X-Bmob-REST-API-Key': config.RESTAPIKey,
-                'Content-Type':'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 'mobilePhoneNumber': this.state.text,
@@ -83,23 +84,22 @@ export default class reg extends Component {
         }).then((response) => response.json())
             .then((responseJson) => {
                 // toastShort('您的验证码是' + this._getRandomNum() + '，有效期为10分钟。您正在使用iRunning的验证码。');
-                if (responseJson.smsId) {
+                if (responseJson.smsId) { 
                     toastShort('已发送至您的手机');
                     //正确号码
                     this.setState({ isSendMsg: 1 });
                     this._openRegCheckNum();
                 } else {
-                    toastShort('发送短信异常'+response.error);
+                    toastShort('发送短信异常' + response.error);
                 }
             }).catch((error) => {
-                toastShort('发送失败,请重试');
+                toastShort('Bmob没信息了好尴尬');
             });
-
-        var code = this._getRandomNum();
-        //Todo 正确号码
-        toastShort(code + '');
-        this.setState({ isSendMsg: 1 });
-        this._openRegCheckNum(code);
+        // var code = this._getRandomNum();
+        // //Todo 正确号码
+        // toastShort(code + '');
+        // this.setState({ isSendMsg: 1 });
+        // this._openRegCheckNum(code);
     }
 
     //判断是否被注册
@@ -139,13 +139,13 @@ export default class reg extends Component {
         }
         return code;
     }
+
     _openRegCheckNum(code) {
         var tellnum = this.state.text;
-        const {navigator} = this.props;
+        const { navigator } = this.props;
         if (navigator) {
             navigator.push({
-                name: 'regCheckNum',
-                component: regCheckNum,
+                id: 'regCheckNum',
                 params: { num: tellnum, code: code }
             });
         }
@@ -159,7 +159,7 @@ export default class reg extends Component {
                 translucent={true}
                 hidden={false}
                 animated={true}
-                />
+            />
 
             <View style={[styles.main_top, { marginTop: 20 }]}>
                 <TouchableWithoutFeedback onPress={() => this._onBackFunction()}>
@@ -191,7 +191,7 @@ export default class reg extends Component {
                         if (text.length === 11) {
                             this._regUptoSer(text);
                         }
-                    } }
+                    }}
                     value={this.state.text}></TextInput>
             </View>
 

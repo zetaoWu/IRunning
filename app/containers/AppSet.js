@@ -9,6 +9,7 @@ import {
     Image,
     BackAndroid,
     Alert,
+    AsyncStorage,
     TouchableOpacity,
 } from 'react-native';
 import {
@@ -24,7 +25,7 @@ import {
 } from 'react-native-update';
 
 import _updateConfig from '../../update.json';
-const {appKey} = _updateConfig[Platform.OS];
+const { appKey } = _updateConfig[Platform.OS];
 
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
@@ -105,6 +106,10 @@ export default class AppSet extends Component {
         return false;//默认行为  
     };
 
+    _signOut() {
+        AsyncStorage.removeItem("loginState");
+    }
+
     render() {
         return (
             <View style={{ flex: 1, marginTop: 22, backgroundColor: '#FFFFFF' }}>
@@ -119,7 +124,7 @@ export default class AppSet extends Component {
                 <View style={styles.container}>
                     <Text style={styles.welcome}>
                         欢迎使用热更新服务
-        </Text>
+                         </Text>
                     <Text style={styles.instructions}>
                         这是版本二 {'\n'}
                         当前包版本号: {packageVersion}{'\n'}
@@ -128,16 +133,29 @@ export default class AppSet extends Component {
                     <TouchableOpacity onPress={this.checkUpdate}>
                         <Text style={styles.instructions}>
                             点击这里检查更新
-          </Text>
+                         </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={this._signOut()}>
+                        <View style={styles.signout}>
+                            <Text>退出登录</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
-
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    signout: {
+        width: Dimensions.get('window').width - 30,
+        height: 50,
+        borderRadius: 2,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#008000',
+    },
     top_style: {
         paddingLeft: 10,
         paddingRight: 20,

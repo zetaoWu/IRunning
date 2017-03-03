@@ -15,7 +15,8 @@ import UserInfoView from './UserInfo';
 import PostDynamicView from './PostDynamic';
 import RegOrLoginView from './regOrLogin';
 import RegView from './reg';
-import LoginView from './login';
+import LoginView from './login'; 
+import RegCheckNum from './regCheckNum';
 import BlogView from './Blog';
 import PicManagerView from './PicManager';
 import AddClassComponent from './addClass';
@@ -27,6 +28,7 @@ import CommendReadView from './CommendRead.js';
 import MapView from './MapView.js';
 import BoundView from './BoundScroll';
 import RecomTrain from './RecomTrain';
+ 
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -48,12 +50,12 @@ class App extends React.Component {
                     translucent={true}
                     hidden={false}
                     animated={false}
-                    />
+                />
                 <Navigator
                     initialRoute={{ name: splashName, index: 0, id: splashName }}
                     configureScene={this._configureScene}
                     renderScene={this._renderScene}
-                    />
+                />
             </View>
         );
     }
@@ -117,9 +119,11 @@ class App extends React.Component {
                 return (<MapView {...route.params} navigator={navigator} />);
             case 'boundView':
                 return (<BoundView {...route.params} navigator={navigator} />);
+            case 'regCheckNum':
+                return (<RegCheckNum {...route.params} navigator={navigator} />);
             case 'recomTrain':
                 return (
-                    <RecomTrain {...route.params} navigator={navigator}/>
+                    <RecomTrain {...route.params} navigator={navigator} />
                 );
             default:
                 break
