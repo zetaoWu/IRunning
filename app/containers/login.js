@@ -10,6 +10,9 @@ import {
     TouchableHighlight,
     StatusBar,
     ActivityIndicator,
+    Keyboard,
+    BackAndroid,
+    Platform,
 } from 'react-native';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
@@ -25,8 +28,33 @@ export default class login extends Component {
             password: '',
             isAccount: '',
             isPwd: '',
-            animating:false,
+            animating: false,
         };
+    }
+    componentDidMount() {
+        if (Platform.OS === 'android') {
+            BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
+        }
+    }
+
+    componentWillUnmount() {
+        if (Platform.OS === 'android') {
+            BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
+        }
+    }
+
+    onBackAndroid = () => {
+        const routers = this.props.navigator.getCurrentRoutes();
+        console.log('当前路由长度：' + routers.length);
+        if (routers.length > 1) {
+            this.props.navigator.pop();
+            return true;//接管默认行为  
+        }
+        return false;//默认行为  
+    };
+
+    _onBackFunction() {
+        this.props.navigator.pop();
     }
 
     _onLoginButton() {
@@ -35,6 +63,7 @@ export default class login extends Component {
                 toastShort('密码格式不正确');
             } else {
                 // this._showOrHide();
+                Keyboard.dismiss();
                 this._reqServerLogin();
             }
         } else {
@@ -50,7 +79,7 @@ export default class login extends Component {
             });
         } else {
             this.setState({
-                 animating: true
+                animating: true
             });
         }
     }
@@ -71,22 +100,17 @@ export default class login extends Component {
                 } else {
                     toastShort('账号密码正确 登录中');
                     this.props.navigator.push({
-                            name: 'main',
-                            id: 'main',
-                            params: {
-                                username: this.state.username,
-                            }
-                        });
+                        name: 'main',
+                        id: 'main',
+                        params: {
+                            username: this.state.username,
+                        }
+                    });
                 }
             });
     }
 
-    _onBackFunction() {
-        const {navigator} = this.props;
-        if (navigator) {
-            navigator.pop();
-        }
-    }
+
 
     render() {
         let self = this;
@@ -98,11 +122,11 @@ export default class login extends Component {
                     translucent={true}
                     hidden={false}
                     animated={true}
-                    />
+                />
 
                 <ActivityIndicator
                     animating={this.state.animating}
-                    style={[styles.centering, {height: 80}]}
+                    style={[styles.centering, { height: 80 }]}
                     size="large" />
 
                 <View style={[styles.main_top, { marginTop: 20 }]}>
@@ -131,7 +155,7 @@ export default class login extends Component {
                                 this.state.isAccount = '';
                             }
                             this.setState({ username: text })
-                        } }
+                        }}
                         value={this.state.username}></TextInput>
                 </View>
 
@@ -142,6 +166,7 @@ export default class login extends Component {
                         placeholder='密码'
                         placeholderTextColor='gray'
                         keyboardType='numeric'
+                        onSubmitEditing={() => { Keyboard.dismiss }}
                         selectionColor='#FFFFFF'
                         secureTextEntry={true}
                         underlineColorAndroid='transparent'
@@ -152,7 +177,7 @@ export default class login extends Component {
                                 this.state.isPwd = '';
                             }
                             this.setState({ password: text })
-                        } }
+                        }}
                         value={this.state.password}></TextInput>
                 </View>
 
@@ -169,7 +194,7 @@ export default class login extends Component {
                 <View style={{ marginTop: 60, width: Dimensions.get('window').width, alignItems: 'center' }}>
                     <Text style={{ color: '#FFFFFF', fontSize: 12 }}>
                         其他方式快速登录
-                </Text>
+                     </Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', height: 70, width: Dimensions.get('window').width - 50 }}>
@@ -224,11 +249,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#999999',
     },
     centering: {
-        position:'absolute',
+        position: 'absolute',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 8,
-        zIndex:2,
+        zIndex: 2,
     },
     reg: {
         alignItems: 'center',

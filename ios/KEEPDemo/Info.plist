@@ -24,12 +24,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+  
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+      
 			<key>reactnative.cn</key>
 			<dict>
+        <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+        <true/>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 				<key>NSIncludesSubdomains</key>
@@ -37,6 +41,7 @@
 			</dict>
 		</dict>
 	</dict>
+  
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>

@@ -21,7 +21,7 @@
   NSURL *jsCodeLocation;
   
   ////   原来的jsCodeLocation
-      jsCodeLocation = [NSURL URLWithString:@"http://127.0.0.1:8081:8081/index.ios.bundle?platform=ios&dev=true"];
+      jsCodeLocation = [NSURL URLWithString:@"http://192.168.1.35:8081/index.ios.bundle?platform=ios&dev=true"];
 //  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
 //   #else
 //      jsCodeLocation= [RCTHotUpdate bundleURL];

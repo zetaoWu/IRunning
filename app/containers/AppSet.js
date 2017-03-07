@@ -34,6 +34,9 @@ import { toastShort } from '../utils/ToastUtil';
 export default class AppSet extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            modalVisible: false,
+        }
     }
 
     _backFunction() {
@@ -108,11 +111,15 @@ export default class AppSet extends Component {
 
     _signOut() {
         AsyncStorage.removeItem("loginState");
+        this.props.navigator.resetTo({
+            id: 'signOut',
+            name:'signOut'
+        });
     }
 
     render() {
         return (
-            <View style={{ flex: 1, marginTop: 22, backgroundColor: '#FFFFFF' }}>
+            <View style={{ flex: 1, marginTop: 22, backgroundColor: '#FFFFFF', alignItems: 'center' }}>
                 <View style={styles.top_style}>
                     <TouchableOpacity onPress={() => this._backFunction()}>
                         <Image style={{ width: 20, height: 20 }} source={require('../img/backicon.png')} resizeMode='cover'></Image>
@@ -135,13 +142,13 @@ export default class AppSet extends Component {
                             点击这里检查更新
                          </Text>
                     </TouchableOpacity>
-
-                    <TouchableOpacity onPress={this._signOut()}>
-                        <View style={styles.signout}>
-                            <Text>退出登录</Text>
-                        </View>
-                    </TouchableOpacity>
                 </View>
+
+                <TouchableOpacity onPress={()=>this._signOut()}>
+                    <View style={styles.signout}>
+                        <Text style={{ fontSize: 18, color: '#FFFFFF' }}>退出登录</Text>
+                    </View>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -149,12 +156,13 @@ export default class AppSet extends Component {
 
 const styles = StyleSheet.create({
     signout: {
-        width: Dimensions.get('window').width - 30,
-        height: 50,
+        width: Dimensions.get('window').width - 70,
+        height: 40,
         borderRadius: 2,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#008000',
+        marginBottom: 30,
     },
     top_style: {
         paddingLeft: 10,

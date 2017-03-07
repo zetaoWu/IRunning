@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, View, Text, InteractionManager, TextInput, BackAndroid, Platform, TouchableHighlight, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { Dimensions, StyleSheet, View, Keyboard, Text, InteractionManager, TextInput, BackAndroid, Platform, TouchableHighlight, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 var widthSrc = Dimensions.get('window').width;
 var heightSrc = Dimensions.get('window').height;
 var TimerMixin = require('react-timer-mixin');
@@ -96,7 +96,7 @@ export default class regCheckNum extends Component {
         const routers = this.props.navigator.getCurrentRoutes();
         console.log('当前路由长度：' + routers.length);
         if (routers.length > 1) {
-           this.props.navigator.pop();
+            this.props.navigator.pop();
             return true;//接管默认行为  
         }
         return false;//默认行为  
@@ -120,6 +120,7 @@ export default class regCheckNum extends Component {
             if (this.state.password.length >= 6) {
                 //验证码正确
                 if (this.state.isNum) {
+                    Keyboard.dismiss();
                     this._regUptoSer(this.state.password);
                 } else {
                     toastShort("验证码错误");
@@ -209,7 +210,6 @@ export default class regCheckNum extends Component {
                 this.interval && clearInterval(this.interval);
             }
         }
-
         let self = this;
         return (<View style={[styles.container, { marginTop: 20 }]}>
             <View style={styles.main_top}>
@@ -249,10 +249,10 @@ export default class regCheckNum extends Component {
                         <TouchableOpacity onPress={() => { self._reGetCheckNum() }}>
                             <Text style={{ color: '#2e8857', fontSize: 14 }}>重获验证码</Text>
                         </TouchableOpacity>
-                    </View> :  <View style={{ flex: 1, marginLeft: 15, borderRadius: 3, borderColor: '#2E8B57', borderWidth: 0.8, height: 45, width: 95, justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ color: '#2e8857', fontSize: 14 }}>重获验证码</Text>
-                        <Text style={{ color: '#2e8857', fontSize: 14 }}>{this.state.deadtime}</Text>
-                    </View>
+                    </View> : <View style={{ flex: 1, marginLeft: 15, borderRadius: 3, borderColor: '#2E8B57', borderWidth: 0.8, height: 45, width: 95, justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={{ color: '#2e8857', fontSize: 14 }}>重获验证码</Text>
+                            <Text style={{ color: '#2e8857', fontSize: 14 }}>{this.state.deadtime}</Text>
+                        </View>
                 }
             </View>
 

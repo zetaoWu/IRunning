@@ -138,8 +138,13 @@ export default class RecomTrain extends Component {
                         </View>
                     </Image>
 
+                    <View style={{flex:1,flexDirection:'row',height:30,}}>
+                        <Text style={{fontSize:15}}>训练说明</Text>
+                        <View></View>
+                        <Image style={{width:25,height}}source={require('../img/jumpto.png')}></Image>
+                    </View>
 
-                    <Text style={{fontSize: 30, height: 200}}>数据数据</Text>
+
                     <Text style={{fontSize: 30, height: 200}}>数据数据</Text>
                     <Text style={{fontSize: 30, height: 200}}>数据数据</Text>
                 </ScrollView>

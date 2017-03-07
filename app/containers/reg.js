@@ -11,6 +11,7 @@ import {
     TextInput,
     TouchableHighlight,
     StatusBar,
+    Keyboard,
 } from 'react-native';
 
 var widthSrc = Dimensions.get('window').width;
@@ -56,7 +57,7 @@ export default class reg extends Component {
 
     _onPressButton() {
         let inputnum = this.state.text;
-        
+
         if (inputnum.length !== 11) {
             toastShort("手机号码输入错误");
             return;
@@ -67,6 +68,7 @@ export default class reg extends Component {
             return;
         }
 
+        Keyboard.dismiss();
         // content: '您的验证码是：' + this._getRandomNum() + ', 有效期是10分钟。',
         //发送验证码
         fetch(GET_CHECK_NUM, {
@@ -84,7 +86,7 @@ export default class reg extends Component {
         }).then((response) => response.json())
             .then((responseJson) => {
                 // toastShort('您的验证码是' + this._getRandomNum() + '，有效期为10分钟。您正在使用iRunning的验证码。');
-                if (responseJson.smsId) { 
+                if (responseJson.smsId) {
                     toastShort('已发送至您的手机');
                     //正确号码
                     this.setState({ isSendMsg: 1 });
@@ -179,6 +181,7 @@ export default class reg extends Component {
                     placeholderTextColor='gray'
                     keyboardType='numeric'
                     selectionColor='#FFFFFF'
+                    clearButtonMode="while-editing"
                     underlineColorAndroid='transparent'
                     onChangeText={(text) => {
                         if (text.length > 0) {

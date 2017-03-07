@@ -227,8 +227,8 @@ export default class homePage extends Component {
             </TouchableHighlight>
         );
     }
+    
     // <Text style={{ width: widthSrc, height: 100 }}>{rowData}</Text>
-
     _renderItemData(rowData, rowID) {
         return (
             <TouchableHighlight onPress={() => this._pressRow(rowData)}>

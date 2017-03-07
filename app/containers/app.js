@@ -15,7 +15,7 @@ import UserInfoView from './UserInfo';
 import PostDynamicView from './PostDynamic';
 import RegOrLoginView from './regOrLogin';
 import RegView from './reg';
-import LoginView from './login'; 
+import LoginView from './login';
 import RegCheckNum from './regCheckNum';
 import BlogView from './Blog';
 import PicManagerView from './PicManager';
@@ -28,7 +28,7 @@ import CommendReadView from './CommendRead.js';
 import MapView from './MapView.js';
 import BoundView from './BoundScroll';
 import RecomTrain from './RecomTrain';
- 
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -93,37 +93,41 @@ class App extends React.Component {
                 )
             case 'reg':
                 return (
-                    <RegView navigator={navigator} route={route} />
+                    <RegView {...route.params} navigator={navigator} route={route} />
+                )
+            case 'signOut':
+                return (
+                    <LoginView {...route.params} navigator={navigator} route={route} />
                 )
             case 'login':
                 return (
-                    <LoginView {...route.params} navigator={navigator} />
+                    <LoginView {...route.params} navigator={navigator} route={route} />
                 )
             case 'blog':
-                return (<BlogView {...route.params} navigator={navigator} />)
+                return (<BlogView {...route.params} navigator={navigator} route={route} />)
             case 'picManager':
-                return (<PicManagerView {...route.params} navigator={navigator} />)
+                return (<PicManagerView {...route.params} navigator={navigator} route={route} />)
             case 'addClass':
-                return (<AddClassComponent {...route.params} navigator={navigator} />)
+                return (<AddClassComponent {...route.params} navigator={navigator} route={route} />)
             case 'runComponent':
-                return (<RunComponent {...route.params} navigator={navigator} />)
+                return (<RunComponent {...route.params} navigator={navigator} route={route} />)
             case 'runSetComponent':
-                return (<RunSetComponent {...route.params} navigator={navigator} />)
+                return (<RunSetComponent {...route.params} navigator={navigator} route={route} />)
             case 'appSet':
-                return (<AppSetView {...route.params} navigator={navigator} />);
+                return (<AppSetView {...route.params} navigator={navigator} route={route} />);
             case 'trainDetail':
-                return (<TrainDetailView {...route.params} navigator={navigator} />);
+                return (<TrainDetailView {...route.params} navigator={navigator} route={route} />);
             case 'commendRead':
-                return (<CommendReadView {...route.params} navigator={navigator} />);
+                return (<CommendReadView {...route.params} navigator={navigator} route={route} />);
             case 'mapview':
-                return (<MapView {...route.params} navigator={navigator} />);
+                return (<MapView {...route.params} navigator={navigator} route={route} />);
             case 'boundView':
-                return (<BoundView {...route.params} navigator={navigator} />);
+                return (<BoundView {...route.params} navigator={navigator} route={route} />);
             case 'regCheckNum':
-                return (<RegCheckNum {...route.params} navigator={navigator} />);
+                return (<RegCheckNum {...route.params} navigator={navigator} route={route} />);
             case 'recomTrain':
                 return (
-                    <RecomTrain {...route.params} navigator={navigator} />
+                    <RecomTrain {...route.params} navigator={navigator} route={route} />
                 );
             default:
                 break
@@ -136,7 +140,10 @@ class App extends React.Component {
             case 'reg':
             case 'login':
             case 'PostScs':
+            case 'signOut':
                 return Navigator.SceneConfigs.FloatFromBottom
+            case '':
+                return Navigator.SceneConfigs.FloatFromLeft
             default:
                 return Navigator.SceneConfigs.FloatFromRight
         }
