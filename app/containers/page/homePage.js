@@ -188,7 +188,7 @@ export default class homePage extends Component {
     }
 
     _onAddFunction() {
-        his.props.navigator.push({
+        this.props.navigator.push({
             id: 'addClass',
         });
     }

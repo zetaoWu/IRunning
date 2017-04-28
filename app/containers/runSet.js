@@ -208,8 +208,8 @@ const styles = StyleSheet.create({
     },
     listview: {
         marginTop: 20,
-        marginLeft: 20,
-        marginRight: 20,
+        marginLeft: 15,
+        marginRight: 15,
     },
     first_set: {
         flexDirection: 'row',
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         borderColor: '#000000',
         borderWidth: 0.5,
-        width: Dimensions.get('window').width - 20,
+        width: Dimensions.get('window').width - 30,
         height: 40,
         backgroundColor: '#F5F5F5'
     },
