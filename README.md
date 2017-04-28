@@ -6,9 +6,11 @@ React native开发的一款运动软件  练手中 </br>
 ##Support: Android 4.1 (API 16)+ IOS(8.0+)
 </br>
 </br>
-Android下载地址 </br>
+###Android下载地址 </br>
 ![下载地址](https://github.com/zetaoWu/IRunning/blob/master/display/F84B3644C4872827C2535DD511B5E057.png)</br>
 </br>
+###IOS 需要手动运行项目</br> 
+记得修改AppDelegate.m 中的链接地址
 </br>
 </br>
 </br>
