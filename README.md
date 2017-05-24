@@ -3,18 +3,22 @@ React native开发的一款运动软件  练手中 </br>
 目前基本界面适配Android 和 IOS， 定位功能暂时未支持IOS ，集成的Android高德sdk</br>
 </br>
 </br>
-## Support: Android 4.1 (API 16)+ IOS(8.0+)
+
+ ## Support: Android 4.1 (API 16)+ IOS(8.0+)
+
 </br>
-</br>
-### Android下载地址 </br>
+
+ ### Android下载地址 </br>
+
 ![下载地址](https://github.com/zetaoWu/IRunning/blob/master/display/F84B3644C4872827C2535DD511B5E057.png)</br>
 </br>
-### IOS 需要手动运行项目</br>
+
+ ### IOS 需要手动运行项目</br>
 记得修改AppDelegate.m 中的链接地址
 </br>
-</br>
-</br>
-## Screenshot
+
+ ## Screenshot
+
 首页展示 </br>
 
 ![首页展示](https://github.com/zetaoWu/IRunning/blob/master/display/3E76B868B4B284621BC8E3B9C53D36F8.jpg)</br>
