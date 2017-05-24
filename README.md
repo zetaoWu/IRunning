@@ -16,6 +16,20 @@ React native开发的一款运动软件  练手中 </br>
  ### IOS 需要手动运行项目</br>
 记得修改AppDelegate.m 中的链接地址
 </br>
+</br>
+
+Development Workflow
+-------
+### Step One
+  npm install -g react-native-cli
+### Step Two
+  npm install
+### Step Three
+  react-native run-android   /  react-native run-ios
+</br>
+</br>
+</br>
+
 
  ## Screenshot
 
@@ -42,17 +56,6 @@ React native开发的一款运动软件  练手中 </br>
 
 
 
-Development Workflow
--------
-### Step One
-  npm install -g react-native-cli
-### Step Two
-  npm install
-### Step Three
-  react-native run-android   /  react-native run-ios
-</br>
-</br>
-</br>
 </br>
 </br>
 </br>
