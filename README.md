@@ -17,7 +17,7 @@ React native开发的一款运动软件  练手中 </br>
 记得修改AppDelegate.m 中的链接地址
 </br>
 </br>
-
+</br>
 Development Workflow
 -------
 ### Step One
@@ -29,7 +29,6 @@ Development Workflow
 </br>
 </br>
 </br>
-
 
  ## Screenshot
 
