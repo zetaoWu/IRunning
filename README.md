@@ -3,19 +3,20 @@ React native开发的一款运动软件  练手中 </br>
 目前基本界面适配Android 和 IOS， 定位功能暂时未支持IOS ，集成的Android高德sdk</br>
 </br>
 </br>
-##Support: Android 4.1 (API 16)+ IOS(8.0+)
+## Support: Android 4.1 (API 16)+ IOS(8.0+)
 </br>
 </br>
-###Android下载地址 </br>
+### Android下载地址 </br>
 ![下载地址](https://github.com/zetaoWu/IRunning/blob/master/display/F84B3644C4872827C2535DD511B5E057.png)</br>
 </br>
-###IOS 需要手动运行项目</br> 
+### IOS 需要手动运行项目</br>
 记得修改AppDelegate.m 中的链接地址
 </br>
 </br>
 </br>
-##Screenshot
+## Screenshot
 首页展示 </br>
+
 ![首页展示](https://github.com/zetaoWu/IRunning/blob/master/display/3E76B868B4B284621BC8E3B9C53D36F8.jpg)</br>
 </br>
 训练列表 </br>
@@ -34,16 +35,16 @@ React native开发的一款运动软件  练手中 </br>
 调用Web Url </br>
 ![调用Web Url](https://github.com/zetaoWu/IRunning/blob/master/display/86BD8EA6095C74B1AEC7FFFC6ACE4825.jpg)</br>
 </br>
- 
- 
+
+
 
 Development Workflow
-------- 
-###Step One
+-------
+### Step One
   npm install -g react-native-cli
-###Step Two
+### Step Two
   npm install
-###Step Three
+### Step Three
   react-native run-android   /  react-native run-ios
 </br>
 </br>
@@ -51,12 +52,13 @@ Development Workflow
 </br>
 </br>
 </br>
+### 重要更新
 ----2017.1.4 发布新动态界面完成。</br>
 缺陷待解决：</br>
 1.部分界面没接入网络。</br>
 2.图片的后期处理不够灵活。</br>
 3.地图选择地点改功能。</br>
-
+4.头像放大问解决</br>
 
 ----2017.2.13 界面和基本功能兼容Android和IOS。</br>
 缺陷待解决：</br>
